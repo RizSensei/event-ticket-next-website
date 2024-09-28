@@ -7,18 +7,18 @@ interface FilterLayoutProps {
 }
 
 const FilterLayout = ({ label, data }: FilterLayoutProps) => {
-  const [items, setItems] = useState(7);
+  const [items, setItems] = useState(10);
 
   const view_more = () => {
-    setItems((prev) => prev + 7);
+    setItems((prev) => prev + 10);
   };
   const view_less = () => {
-    setItems((prev) => prev - 7);
+    setItems((prev) => prev - 10);
   };
   return (
     <div>
       <h1 className="mt-6 text-blue font-semibold text-sm">{label}</h1>
-      <div className="mt-2 h-full flex flex-col gap-2">
+      <div className="mt-2 h-full grid grid-cols-2 gap-2">
         {data
           .slice(0, items)
           .map((filter: { name: string | undefined }, i: number) => {
@@ -40,7 +40,7 @@ const FilterLayout = ({ label, data }: FilterLayoutProps) => {
               More
             </button>
           )}
-          {items > 7 && (
+          {items > 10 && (
             <button onClick={view_less} className="text-blue text-xs w-max">
               Less
             </button>

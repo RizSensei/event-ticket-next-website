@@ -1,4 +1,4 @@
-import { FaCalendarAlt, FaHome } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 
 export const navbarItems = [
@@ -7,11 +7,11 @@ export const navbarItems = [
         icon: <FaHome />,
         path:'/'
     },
-    {
-        label:'Events',
-        icon: <FaCalendarAlt />,
-        path:'/events'
-    },
+    // {
+    //     label:'Events',
+    //     icon: <FaCalendarAlt />,
+    //     path:'/events'
+    // },
     {
         label:'Notifications',
         icon: <IoMdNotifications />,
