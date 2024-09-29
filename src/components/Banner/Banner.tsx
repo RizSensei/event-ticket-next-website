@@ -1,10 +1,8 @@
-import Image from 'next/image'
-import React from 'react'
 
 const Banner = () => {
   return (
     <div className="relative mt-5">
-    <div className="h-72 2xl:h-96 w-full rounded-2xl overflow-hidden">
+    {/* <div className="h-72 2xl:h-96 w-full rounded-2xl overflow-hidden">
       <Image
         src={
           "https://eventmx.com/media/thumbnails/event_cropped_image/3NZqXxegbnSjQmTDowrza3_large.png"
@@ -44,7 +42,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </div>
   )
 }

@@ -34,7 +34,7 @@ const EventCard = (props: { event: { image: string | StaticImport } }) => {
               </div>
             </div>
             <Popover className="relative">
-              <PopoverButton className="font-sans h-max w-max rounded-lg font-medium text-sm">
+              <PopoverButton className="font-sans h-max w-max rounded-lg font-medium text-sm focus:outline-none">
                 <BsThreeDots />
               </PopoverButton>
               <PopoverPanel anchor="bottom" className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden">
@@ -44,8 +44,8 @@ const EventCard = (props: { event: { image: string | StaticImport } }) => {
             </Popover>
           </div>
         </div>
-        <div className="relative h-80 2xl:h-96 w-full rounded-md overflow-hidden">
-          <Link href={"/"} className="pb-1 bg-red-500">
+        <div className="relative h-96 w-full rounded-md overflow-hidden">
+          <Link href={"/event/1"} className="pb-1 bg-red-500">
             <Image
               src={props.event.image}
               alt=""

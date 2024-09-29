@@ -10,6 +10,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import Logo from "@/images/logo/mero-ticket-logo.png";
 import FilterDrawer from "@@/components/Drawer/FilterDrawer";
 import TopDrawer from "@@/components/Drawer/TopDrawer";
+import Link from "next/link";
 
 export default function RootLayout({
   children,
@@ -28,16 +29,16 @@ export default function RootLayout({
 
   return (
     <PageLayout title="Mero Ticket" description="">
-      <div
-        className={`antialiased flex flex-col h-screen w-full bg-white`}
-      >
+      <div className={`antialiased flex flex-col h-screen w-full bg-white`}>
         <div className="flex flex-grow">
           <div className="h-full flex flex-grow justify-center w-full bg-gray-50">
             {/* main content area */}
             <div className="relative max-w-lg 2xl:max-w-xl h-full py-5 px-12 flex flex-grow justify-center bg-white">
               <div className="w-full bg-white">
                 <div className="w-full flex items-center justify-between">
-                  <Image src={Logo.src} alt="" width={150} height={75} />
+                  <Link href="/">
+                    <Image src={Logo.src} alt="" width={150} height={75} />
+                  </Link>
                   <button onClick={handleTopDrawer}>
                     {" "}
                     <GiHamburgerMenu />
@@ -65,21 +66,21 @@ export default function RootLayout({
                   </button>
 
                   <Popover className="relative">
-                    <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800">
+                    <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800 focus:outline-none">
                       <FaUser />
                     </PopoverButton>
                     <PopoverPanel
                       anchor="bottom"
                       className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
                     >
-                      <button className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2">
+                      <Link href={'/profile'} className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2">
                         <FaUser />
                         <span>Profile</span>
-                      </button>
-                      <button className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2">
+                      </Link>
+                      <Link href={'/profile/favourites'}  className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2">
                         <FaHeart />
                         <span>Favourites</span>
-                      </button>
+                      </Link>
                       <button className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2">
                         <BiLogOut />
                         <span>Log Out</span>
