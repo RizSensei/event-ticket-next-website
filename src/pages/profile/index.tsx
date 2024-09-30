@@ -1,8 +1,14 @@
 import React from "react";
 import ProfileLayout from "../../app/profile.layout";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const index = () => {
+const Profile = () => {
+  const router = useRouter();
+
+  const handleLogoutClick = () => {
+    router.push('/');
+  }
   return (
     <ProfileLayout>
       <div className="mt-10">
@@ -30,9 +36,12 @@ const index = () => {
 
       <div className="mt-5 flex gap-2">
         <Link href={'/profile/favourites'} className="px-2 py-2 bg-neutral-800 text-white flex justify-center flex-col items-center flex-1 rounded-md">
-          Go to Favourites
+          Favourites
         </Link>
-        <button className="px-2 py-2 bg-red-500 text-white flex-1 rounded-md">
+        <Link href={'/profile/booked-tickets'} className="px-2 py-2 bg-neutral-700 text-white flex justify-center flex-col items-center flex-1 rounded-md">
+          Booked Tickets
+        </Link>
+        <button onClick={handleLogoutClick} className="px-2 py-2 bg-red-500 text-white flex-1 rounded-md">
           Log Out
         </button>
       </div>
@@ -40,4 +49,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Profile;

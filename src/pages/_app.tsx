@@ -41,21 +41,24 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
     };
   }, [router]);
 
-  const isSpecialPage = ["Login"].includes(Component.name);
-  console.log(Component.name)
+  const isSpecialPage = ["Login", "Register"].includes(Component.name);
 
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         {isLoading ? (
           <PageLoader />
-        ) : isSpecialPage ? (
-          <Component {...pageProps} />
         ) : (
-          <RootLayout>
+          <>
             <Toaster />
-            <Component {...pageProps} />
-          </RootLayout>
+            {isSpecialPage ? (
+              <Component {...pageProps} />
+            ) : (
+              <RootLayout>
+                <Component {...pageProps} />
+              </RootLayout>
+            )}
+          </>
         )}
       </QueryClientProvider>
     </Provider>

@@ -1,19 +1,29 @@
 import { eventCategories } from "@@/utils/eventCategories";
+import { useSpring, animated } from "react-spring";
 import { venueType } from "@@/utils/venue";
 import { HiMiniXMark } from "react-icons/hi2";
 import FilterLayout from "../FilterLayout/FilterLayout";
 
 interface FilterDrawerProps {
-  isFilterDrawerOpen?: boolean;
+  isFilterDrawerOpen: boolean;
   handleFilterDrawer: () => void;
 }
 
+
+
 const FilterDrawer = ({
-  handleFilterDrawer,
+  handleFilterDrawer,isFilterDrawerOpen
 }: FilterDrawerProps) => {
+
+  const filterDrawerStyles = useSpring({
+    transform: isFilterDrawerOpen ? "translateY(0%)" : "translateY(100%)",
+    opacity: isFilterDrawerOpen ? 1 : 0,
+    config: { tension: 220, friction: 20 },
+  })
+
   return (
-    <div
-      id="filter-drawer"
+    <animated.div
+    style={filterDrawerStyles}
       className="z-10 max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white pt-3 px-12 rounded-t-3xl border-t border-gray-400 overflow-y-auto"
     >
       <div className="max-h-[575px] w-full h-full">
@@ -57,7 +67,7 @@ const FilterDrawer = ({
           <FilterLayout label="Venue Type" data={venueType} />
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
