@@ -1,18 +1,26 @@
 import EventCard from "@@/components/Event-Card/EventCard";
-
-import { events } from "../utils/events";
+import useEvent from "@@/hooks/useEvents";
+import { Event } from "@@/types/events";
 
 const Home = () => {
+  const { fetchEventQuery } = useEvent({});
+  const { data: events } = fetchEventQuery ?? {};
   return (
-    <div className="mt-5">
-      <div className="flex flex-col items-center gap-y-6">
-        {events.map((event, i) => {
-          return (
-            <div key={i} className="pb-6 border-b">
-              <EventCard event={event} />
-            </div>
-          );
-        })}
+    <div className="mt-5 w-full">
+      <div className="flex flex-col w-full gap-y-6">
+        {events?.data?.length > 0 ? (
+          events?.data.map((event: Event, i: number) => {
+            return (
+              <div key={i} className="pb-6 border-b">
+                <EventCard event={event} index={i} />
+              </div>
+            );
+          })
+        ) : (
+          <h1 className="text-center text-neutral-700">
+            Currently No Events Organized
+          </h1>
+        )}
       </div>
     </div>
   );

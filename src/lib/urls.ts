@@ -8,6 +8,9 @@ export default {
   // customer 
   API_CUSTOMER_REGISTER: `${BASEURL}/auth/customer-registration`,
   API_CUSTOMER_LOGIN: `${BASEURL}/auth/customer-login`,
+  API_CUSTOMER_PROFILE: `${BASEURL}/auth/customer-profile`,
+  API_CUSTOMER_INVOICES: `${BASEURL}/auth/my-invoices`,
+  API_INVOICE: `${BASEURL}/invoices`,
   // events 
   API_EVENT: `${BASEURL}/events`,
   API_EVENT_CATEGORY: `${BASEURL}/event-categories`,

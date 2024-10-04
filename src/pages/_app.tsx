@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import "../app/globals.css";
 import PageLoader from "../components/PageLoader/PageLoader";
+import { AuthProvider } from "../context/AuthContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,20 +47,22 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        {isLoading ? (
-          <PageLoader />
-        ) : (
-          <>
-            <Toaster />
-            {isSpecialPage ? (
-              <Component {...pageProps} />
-            ) : (
-              <RootLayout>
+        <AuthProvider>
+          {isLoading ? (
+            <PageLoader />
+          ) : (
+            <>
+              <Toaster />
+              {isSpecialPage ? (
                 <Component {...pageProps} />
-              </RootLayout>
-            )}
-          </>
-        )}
+              ) : (
+                <RootLayout>
+                  <Component {...pageProps} />
+                </RootLayout>
+              )}
+            </>
+          )}
+        </AuthProvider>
       </QueryClientProvider>
     </Provider>
   );

@@ -39,7 +39,7 @@ const FilterDrawer = ({
 
           {/* price filter  */}
           <div>
-            <h1 className="mt-6 text-blue font-semibold text-sm">
+            <h1 className="mt-6 text-neutral-800 font-semibold text-sm">
               Ticket Price
             </h1>
             <div className="mt-2 h-full grid grid-cols-5 gap-2">
@@ -57,7 +57,7 @@ const FilterDrawer = ({
                 placeholder="Max"
                 className="col-span-2 border py-1 pl-2 text-sm focus:outline-none shadow-sm"
               />
-              <button className="px-2 py-1 rounded-md bg-blue text-sm text-white flex flex-col items-center">
+              <button className="px-2 py-1 rounded-md bg-neutral-800 text-sm text-white flex flex-col items-center">
                 Filter
               </button>
             </div>

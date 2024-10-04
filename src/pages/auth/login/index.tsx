@@ -1,12 +1,23 @@
 import AuthLayout from "@@/app/auth.layout";
 import FormikInput from "@@/components/Formik/FormikInput";
 import useLogin from "@@/hooks/useLogin";
+import { login } from "@@/redux/slice/auth";
+import { useAppDispatch } from "@@/redux/store/hooks";
 import { Customer } from "@@/types/auth";
 import { loginSchema } from "@@/validation/loginSchema";
 import { Form, Formik, FormikHelpers } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+
+interface LoginResponse {
+  access_token: string;
+}
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const { customerLoginMutation } = useLogin();
 
   const initialValues: Customer = {
@@ -18,12 +29,15 @@ const Login = () => {
     values: Customer,
     { setFieldError, resetForm }: FormikHelpers<Customer>
   ) => {
-    // console.log(values);
     try {
       await customerLoginMutation.mutateAsync(values, {
-        onSuccess: () => {
+        onSuccess: (data: LoginResponse) => {
+          if(data.access_token){
+            dispatch(login({ token: data.access_token }));
+          }
           resetForm();
           console.log("Login success");
+          router.push("/");
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {
@@ -33,6 +47,8 @@ const Login = () => {
               setFieldError(key, value?.toString());
             });
           }
+
+          toast.error("Invalid email or password. Please try again.");
         },
       });
     } catch (err) {

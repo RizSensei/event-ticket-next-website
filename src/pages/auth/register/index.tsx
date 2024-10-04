@@ -20,7 +20,6 @@ const Register = () => {
     values: Customer,
     { setFieldError, resetForm }: FormikHelpers<Customer>
   ) => {
-    // console.log(values);
     try {
       await customerRegisterMutation.mutateAsync(values, {
         onSuccess: () => {

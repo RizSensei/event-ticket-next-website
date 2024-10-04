@@ -17,7 +17,7 @@ const FilterLayout = ({ label, data }: FilterLayoutProps) => {
   };
   return (
     <div>
-      <h1 className="mt-6 text-blue font-semibold text-sm">{label}</h1>
+      <h1 className="mt-6 text-neutral-800 font-semibold text-sm">{label}</h1>
       <div className="mt-2 h-full grid grid-cols-2 gap-2">
         {data
           .slice(0, items)
@@ -36,12 +36,12 @@ const FilterLayout = ({ label, data }: FilterLayoutProps) => {
           })}
         <div className="flex gap-2">
           {items < data.length && (
-            <button onClick={view_more} className="text-blue text-xs w-max">
+            <button onClick={view_more} className="text-neutral-800 text-xs w-max">
               More
             </button>
           )}
           {items > 10 && (
-            <button onClick={view_less} className="text-blue text-xs w-max">
+            <button onClick={view_less} className="text-neutral-800 text-xs w-max">
               Less
             </button>
           )}

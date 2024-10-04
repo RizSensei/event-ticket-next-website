@@ -11,6 +11,12 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'images.pexels.com'
             },
+            {
+                protocol: 'http',
+                hostname: '128.199.23.2',
+                port: '8080',
+                pathname: '/home/projects/tickets-management-backend/uploads/**',
+              },
         ]
     }
 };

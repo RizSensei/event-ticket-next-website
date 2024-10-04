@@ -1,4 +1,4 @@
-import Logo from "@/images/logo/mero-ticket-logo.png";
+import Logo from "@/images/logo/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
@@ -21,27 +21,27 @@ const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
             </button>
           </div>
           <div className="mt-5">
-            <h2 className="text-blue font-semibold">Events Next Week</h2>
+            <h2 className="text-neutral-800 font-semibold">Events Next Week</h2>
             <div className="mt-2 flex flex-col divide-y gap-2">
               <div className="pt-2 flex flex-col gap-1">
                 <h1 className="z-10 font-sans text-gray-700 text-sm font-semibold leading-5 line-clamp-1">
-                  Pahenlo Batti Muni Live in Butwal
+                Mantra band live in Pokhara
                 </h1>
                 <div className="flex gap-1 items-center text-blue font-medium font-sans text-xs">
                   <FaLocationDot />
                   <span className="text-gray-500">
-                    Iclick multi Venue, Lalitpur
+                  Paradiso Pokhara, Pokhara
                   </span>
                 </div>
               </div>
               <div className="pt-2 flex flex-col gap-1">
                 <h1 className="z-10 font-sans text-gray-700 text-sm font-semibold leading-5 line-clamp-1">
-                  Pahenlo Batti Muni Live in Butwal
+                Aaryan Shrestha Live at Sekuwa by kilo
                 </h1>
                 <div className="flex gap-1 items-center text-blue font-medium font-sans text-xs">
                   <FaLocationDot />
                   <span className="text-gray-500">
-                    Iclick multi Venue, Lalitpur
+                  Sekuwa By kilo, Lalitpur
                   </span>
                 </div>
               </div>

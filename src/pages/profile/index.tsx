@@ -2,13 +2,22 @@ import React from "react";
 import ProfileLayout from "../../app/profile.layout";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@@/redux/store/hooks";
+import { logout } from "@@/redux/slice/auth";
+import { RootState } from "@@/redux/store/store";
 
 const Profile = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
-  const handleLogoutClick = () => {
-    router.push('/');
-  }
+  const profileData = useAppSelector((state: RootState) => state.user);
+  const {profile} = profileData;
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/");
+  };
+
   return (
     <ProfileLayout>
       <div className="mt-10">
@@ -16,32 +25,45 @@ const Profile = () => {
           <tbody>
             <tr className="bg-white">
               <td className="px-4 py-2">Name:</td>
-              <td className="font-sans px-4 py-2">Rishav Maskey</td>
+              <td className="font-sans px-4 py-2">{profile?.name ?? "N/A"}</td>
             </tr>
             <tr className="bg-gray-50">
               <td className="px-4 py-2">Gender:</td>
-              <td className="font-sans px-4 py-2">Male</td>
+              <td className="font-sans px-4 py-2">{profile?.gender ?? "N/A"}</td>
             </tr>
             <tr className="bg-white">
               <td className="px-4 py-2">Phone No:</td>
-              <td className="font-sans px-4 py-2">9812545685</td>
+              <td className="font-sans px-4 py-2">{profile?.phone ?? "N/A"}</td>
             </tr>
             <tr className="bg-gray-50">
               <td className="px-4 py-2">Email:</td>
-              <td className="font-sans px-4 py-2">maskeymero@gmail.com</td>
+              <td className="font-sans px-4 py-2">{profile?.email ?? "N/A"}</td>
+            </tr>
+            <tr className="bg-gray-50">
+              <td className="px-4 py-2">DOB:</td>
+              <td className="font-sans px-4 py-2">{profile?.date_of_birth ?? "N/A"}</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div className="mt-5 flex gap-2">
-        <Link href={'/profile/favourites'} className="px-2 py-2 bg-neutral-800 text-white flex justify-center flex-col items-center flex-1 rounded-md">
+        <Link
+          href={"/profile/favourites"}
+          className="px-2 py-2 bg-neutral-800 text-white flex justify-center flex-col items-center flex-1 rounded-md"
+        >
           Favourites
         </Link>
-        <Link href={'/profile/booked-tickets'} className="px-2 py-2 bg-neutral-700 text-white flex justify-center flex-col items-center flex-1 rounded-md">
-          Booked Tickets
+        <Link
+          href={"/profile/myTickets"}
+          className="px-2 py-2 bg-neutral-700 text-white flex justify-center flex-col items-center flex-1 rounded-md"
+        >
+          My Tickets
         </Link>
-        <button onClick={handleLogoutClick} className="px-2 py-2 bg-red-500 text-white flex-1 rounded-md">
+        <button
+          onClick={handleLogout}
+          className="px-2 py-2 bg-red-500 text-white flex-1 rounded-md"
+        >
           Log Out
         </button>
       </div>

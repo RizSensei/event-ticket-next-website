@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
-import Logo from "@/images/logo/mero-ticket-logo.png";
+import Logo from "@/images/logo/logo.png";
 
 interface AuthLayoutProps {
   children: ReactNode;
