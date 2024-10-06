@@ -6,6 +6,7 @@ import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
+import BookNowBtn from "../BookNow/BookNowBtn";
 
 const imageUrls = [
   "https://cdn.ticketsanjal.com/images/2024/08/12/124147-MADHYAPUR_MUSIC_FEST_FINAL1%20(1).jpg",
@@ -25,13 +26,12 @@ const imageUrls = [
 const EventCard = ({ event, index }: { event: Event; index: number }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const handleBooking = () => {
-    console.log(isBookingOpen);
     setIsBookingOpen((prev) => !prev);
   };
 
   return (
     <div className="w-full flex justify-center">
-      <div className="max-w-md w-full overflow-hidden z-0">
+      <div className="max-w-md w-full overflow-hidden">
         <div className="mb-2">
           <div className="flex justify-between gap-1">
             <div className="flex flex-col gap-1">
@@ -61,7 +61,7 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
           </div>
         </div>
         <div className="relative h-96 w-full rounded-md overflow-hidden">
-          <Link href={`/event/${event.id}`} className="pb-1 grow-0">
+          <Link href={`/event/${event.id}`} className="pb-1 grow-0 -z-10">
             {event?.banner_photo ? (
               <>
                 <Image
@@ -90,12 +90,12 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
           <div className="flex justify-end gap-1">
             {/* add to favourites button  */}
             <AddToFavouritesBtn />
-            <button
-              onClick={handleBooking}
-              className="px-3 py-2 text-xs bg-neutral-900 text-white rounded-md"
-            >
-              Book Now
-            </button>
+            <BookNowBtn
+              id={event?.id}
+              handleBooking={handleBooking}
+              isBookingOpen={isBookingOpen}
+              setIsBookingOpen={setIsBookingOpen}
+            />
           </div>
         </div>
         <div className="mt-3 flex flex-col gap-1 text-light-black">

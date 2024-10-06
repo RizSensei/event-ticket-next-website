@@ -1,7 +1,7 @@
 import Logo from "@/images/logo/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLocationDot } from "react-icons/fa6";
+// import { FaLocationDot } from "react-icons/fa6";
 import { HiMiniXMark } from "react-icons/hi2";
 
 interface TopDrawerProps {
@@ -11,7 +11,7 @@ interface TopDrawerProps {
 
 const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
   return (
-    <div className="z-10 max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white pt-3 px-12 border-t border-gray-400 overflow-y-auto">
+    <div className="z-10 max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white px-5 md:px-12  border-t border-gray-400 overflow-y-auto">
       <div className="h-screen">
         <div className="py-5">
           <div className="w-full flex items-center justify-between">
@@ -21,7 +21,7 @@ const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
             </button>
           </div>
           <div className="mt-5">
-            <h2 className="text-neutral-800 font-semibold">Events Next Week</h2>
+            {/* <h2 className="text-neutral-800 font-semibold">Events Next Week</h2>
             <div className="mt-2 flex flex-col divide-y gap-2">
               <div className="pt-2 flex flex-col gap-1">
                 <h1 className="z-10 font-sans text-gray-700 text-sm font-semibold leading-5 line-clamp-1">
@@ -45,7 +45,7 @@ const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="mt-12">
               <p className="text-sm text-gray-500">
                 <span className="text-[#241F21] font-semibold">MeroTicket</span>{" "}

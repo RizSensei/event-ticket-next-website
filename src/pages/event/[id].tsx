@@ -1,7 +1,7 @@
 import AddToFavouritesBtn from "@@/components/AddToFavourites/AddToFavouritesBtn";
-import BookingCard from "@@/components/BookingCard/BookingCard";
 import BookNowBtn from "@@/components/BookNow/BookNowBtn";
 import useEvents from "@@/hooks/useEvents";
+import { TicketType } from "@@/types/ticketType";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -12,9 +12,8 @@ const Event = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { fetchEventDetailQuery } = useEvents({ id:id });
+  const { fetchEventDetailQuery,fetchEventTicketTypesQuery } = useEvents({ id: id });
   const { data: event } = fetchEventDetailQuery;
-  const { fetchEventTicketTypesQuery } = useEvents({ id:id });
   const { data: ticketType } = fetchEventTicketTypesQuery;
 
   const handleBooking = () => {
@@ -54,10 +53,15 @@ const Event = () => {
         <div className="mt-3">
           <div className="flex justify-end gap-1">
             {/* add to favourites button  */}
-            <AddToFavouritesBtn/>
-            
+            <AddToFavouritesBtn />
+
             {/* book events btn  */}
-            <BookNowBtn handleBooking={handleBooking} />
+            <BookNowBtn
+              id={id}
+              handleBooking={handleBooking}
+              isBookingOpen={isBookingOpen}
+              setIsBookingOpen={setIsBookingOpen}
+            />
           </div>
         </div>
 
@@ -85,29 +89,20 @@ const Event = () => {
             <hr className="flex-grow" />
           </div>
           <div>
-            {ticketType?.data && ticketType.data.length > 0 ? (
-              ticketType.data.map(
-                (
-                  type: {
-                    name: string;
-                    price: string | number;
-                    capacity: string | number;
-                  },
-                  i: number
-                ) => {
-                  return (
-                    <div
-                      key={i}
-                      className="flex justify-between font-sans text-sm text-gray-500"
-                    >
-                      <p>
-                        {type.name} Tickets x1 Rs.{type.price} /-
-                      </p>
-                      <p>Capacity: 0/{type.capacity}</p>
-                    </div>
-                  );
-                }
-              )
+            {ticketType && ticketType?.length > 0 ? (
+              ticketType?.map((type: TicketType, i: number) => {
+                return (
+                  <div
+                    key={i}
+                    className="flex justify-between font-sans text-sm text-gray-500"
+                  >
+                    <p>
+                      {type.name} Tickets x1 Rs.{type.price} /-
+                    </p>
+                    <p>Capacity: 0/{type.capacity}</p>
+                  </div>
+                );
+              })
             ) : (
               <p className="font-sans text-sm text-gray-500">
                 Tickets Information will be made available soon
@@ -126,7 +121,7 @@ const Event = () => {
           </div>
         </div> */}
       </div>
-
+      {/* 
       {isBookingOpen && (
         <BookingCard
         event={event}
@@ -134,7 +129,7 @@ const Event = () => {
           handleBooking={handleBooking}
           setIsBookingOpen={setIsBookingOpen}
         />
-      )}
+      )} */}
     </>
   );
 };

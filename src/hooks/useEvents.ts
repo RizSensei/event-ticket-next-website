@@ -4,7 +4,7 @@ import {
   fetchEventCategories,
   fetchEventDetail,
   fetchEventTicketTypes,
-  fetchTicketType,
+  // fetchTicketType,
 } from "@@/apis/event";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
@@ -20,7 +20,6 @@ const useEvents = (props: EventParameter) =>
     const id = props.id;
     const term = props.term;
 
-    // const [id, setId] = useState(0);
     const fetchEventQuery = useQuery({
       queryKey: [
         "events",
@@ -57,12 +56,12 @@ const useEvents = (props: EventParameter) =>
       enabled: !!id,
     });
 
-    const fetchTicketTypeQuery = useQuery({
-      queryKey: ["ticket-type", id],
-      queryFn: () => fetchTicketType(id),
-      staleTime: Infinity,
-      enabled: !!id,
-    });
+    // const fetchTicketTypeQuery = useQuery({
+    //   queryKey: ["ticket-type", id],
+    //   queryFn: () => fetchTicketType(id),
+    //   staleTime: Infinity,
+    //   enabled: !!id,
+    // });
 
     const bookTicketsMutation = useMutation({
       mutationFn: bookTickets,
@@ -73,7 +72,7 @@ const useEvents = (props: EventParameter) =>
       fetchEventDetailQuery,
       fetchEventCategoiesQuery,
       fetchEventTicketTypesQuery,
-      fetchTicketTypeQuery,
+      // fetchTicketTypeQuery,
       bookTicketsMutation,
     };
   };

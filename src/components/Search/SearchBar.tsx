@@ -29,7 +29,7 @@ const SearchBar = () => {
       {/* Search result box */}
       {search && (
         <div className="absolute w-full bg-white z-30">
-          <div className="mt-1 h-full max-h-96 border border-neutral-200">
+          <div className="mt-1 h-full max-h-96 border border-neutral-200 overflow-hidden overflow-y-auto">
             {/* Render search suggestions or results here */}
             <div className="flex flex-col overflow-y-auto">
               {events && events.length > 0 ? (

@@ -21,17 +21,14 @@ const ProfileLayout = ({ children }: ProfileLayoutInterface) => {
   const { data: profile, refetch } = fetchCustomerProfileQuery ?? {};
 
   useEffect(() => {
-    // When logging in, if authenticated, refetch the profile
     if (isAuthenticated) {
-      // Clear the profile before fetching the new one
-      dispatch(setProfile(null)); // Clear profile immediately
+      dispatch(setProfile(null));
       refetch().then((result) => {
         if (result?.data) {
-          dispatch(setProfile(result.data)); // Set new profile
+          dispatch(setProfile(result.data));
         }
       });
     } else {
-      // When logging out, clear the profile
       dispatch(setProfile(null));
     }
   }, [isAuthenticated, refetch, dispatch]);
@@ -48,9 +45,7 @@ const ProfileLayout = ({ children }: ProfileLayoutInterface) => {
           <div className="relative h-20 w-20 flex flex-col items-center justify-center rounded-full border-4 border-neutral-800">
             {profile?.profile_picture ? (
               <Image
-                src={
-                  profile?.profile_picture
-                }
+                src={profile?.profile_picture}
                 alt=""
                 height={1550}
                 width={1550}

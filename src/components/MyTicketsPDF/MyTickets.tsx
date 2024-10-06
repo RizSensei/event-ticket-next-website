@@ -118,9 +118,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "5px", 
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap", // Allows wrapping like a grid
+    gap: 5,
   },
   flexGrid: {
     display: "flex",

@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import { FaLocationDot } from "react-icons/fa6";
-import { HiMiniXMark } from "react-icons/hi2";
+// import Image from "next/image";
+// import Link from "next/link";
+// import { FaLocationDot } from "react-icons/fa6";
+// import { HiMiniXMark } from "react-icons/hi2";
 import ProfileLayout from "../../../app/Layout/profile.layout";
 
 const Favourites = () => {
@@ -17,7 +17,8 @@ const Favourites = () => {
         </div>
 
         <div className="mt-5">
-          <div>
+          <h1 className="text-center text-neutral-700">No Favourites</h1>
+          {/* <div>
             <div className="flex gap-5 items-center bg-gray-100 p-2 rounded-md">
               <Link href={'/events/1'} className="h-16 w-16 rounded-md overflow-hidden shrink-0">
                 <Image
@@ -50,7 +51,7 @@ const Favourites = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </ProfileLayout>

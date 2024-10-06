@@ -1,6 +1,5 @@
 "use client";
 import Logo from "@/images/logo/logo.png";
-import FilterDrawer from "@@/components/Drawer/FilterDrawer";
 import TopDrawer from "@@/components/Drawer/TopDrawer";
 import { AuthContext } from "@@/context/AuthContext";
 import { logout } from "@@/redux/slice/auth";
@@ -10,7 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
-import { FaFilter, FaRegUser, FaUser } from "react-icons/fa6";
+import { FaRegUser, FaUser } from "react-icons/fa6";
 import { FiBell } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosHeartEmpty } from "react-icons/io";
@@ -25,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [isTopDrawerOpen, setIsTopDrawerOpen] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
   const dispatch = useDispatch();
@@ -36,9 +34,7 @@ export default function RootLayout({
     router.push("/");
   };
 
-  const handleFilterDrawer = () => {
-    setIsFilterDrawerOpen((prev) => !prev);
-  };
+
 
   const handleTopDrawer = () => {
     setIsTopDrawerOpen((prev) => !prev);
@@ -61,15 +57,15 @@ export default function RootLayout({
                     <GiHamburgerMenu />
                   </button>
                 </div>
-                <div className="mt-5 flex items-center justify-between gap-2">
+                <div className="mt-3 flex items-center justify-between gap-2">
                   <SearchBar/>
 
-                  <button
+                  {/* <button
                     onClick={handleFilterDrawer}
                     className="py-2 pl-2 text-base flex items-center text-gray-800"
                   >
                     <FaFilter />
-                  </button>
+                  </button> */}
 
                   <Popover className="relative">
                     <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800 focus:outline-none">
@@ -145,13 +141,6 @@ export default function RootLayout({
                 </div>
                 {children}
               </div>
-
-              {isFilterDrawerOpen && (
-                <FilterDrawer
-                  isFilterDrawerOpen={isFilterDrawerOpen}
-                  handleFilterDrawer={handleFilterDrawer}
-                />
-              )}
 
               {isTopDrawerOpen && (
                 <TopDrawer

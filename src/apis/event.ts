@@ -3,6 +3,7 @@ import axiosClient from "@@/lib/axios";
 import urls from "@@/lib/urls";
 import { Category } from "@@/types/category";
 import { Event } from "@@/types/events";
+import { TicketType } from "@@/types/ticketType";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,11 +33,11 @@ export const fetchEventDetail = async (eventId: number | string | string[] | und
   };
 
 
-export const fetchEventTicketTypes = async (eventId: number | string | string[] | undefined) => {
-    const response = await axiosClient.get<Event>(
+export const fetchEventTicketTypes = async (eventId: number | string | string[] | undefined): Promise<TicketType[]> => {
+    const response = await axiosClient.get(
       `${urls.API_EVENT}/${eventId}/ticket-types`,
     );
-    return response?.data;
+    return response?.data?.data;
   };
 
 //get ticket type information  

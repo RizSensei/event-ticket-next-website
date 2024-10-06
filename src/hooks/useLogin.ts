@@ -1,15 +1,22 @@
-import { customerLogin } from '@@/apis/auth';
-import { useMutation } from '@tanstack/react-query';
+import { customerLogin } from "@@/apis/auth";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useLogin = () => {
+  const queryClient = useQueryClient();
 
-    const customerLoginMutation = useMutation({
-        mutationFn: customerLogin,
+  const customerLoginMutation = useMutation({
+    mutationFn: customerLogin,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["customer-profile", "invoice"],
       });
+      queryClient.refetchQueries({ queryKey: ["customer-profile", "invoice"] });
+    },
+  });
 
   return {
-    customerLoginMutation
-  }
-}
+    customerLoginMutation,
+  };
+};
 
-export default useLogin
+export default useLogin;
