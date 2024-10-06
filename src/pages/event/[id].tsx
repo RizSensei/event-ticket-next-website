@@ -1,10 +1,10 @@
+import AddToFavouritesBtn from "@@/components/AddToFavourites/AddToFavouritesBtn";
 import BookingCard from "@@/components/BookingCard/BookingCard";
+import BookNowBtn from "@@/components/BookNow/BookNowBtn";
 import useEvents from "@@/hooks/useEvents";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import toast from "react-hot-toast";
-import { CiHeart } from "react-icons/ci";
 import { FaLocationDot } from "react-icons/fa6";
 
 const Event = () => {
@@ -19,10 +19,6 @@ const Event = () => {
 
   const handleBooking = () => {
     setIsBookingOpen((prev) => !prev);
-  };
-
-  const handleAddToFavourites = () => {
-    toast.success("Added to Favourites");
   };
 
   return (
@@ -57,19 +53,11 @@ const Event = () => {
 
         <div className="mt-3">
           <div className="flex justify-end gap-1">
-            <button
-              onClick={handleAddToFavourites}
-              className="px-3 py-2 flex items-center gap-1 text-sm bg-neutral-800 text-white rounded-md"
-            >
-              <CiHeart />
-              <span>Add to Favourites</span>
-            </button>
-            <button
-              onClick={handleBooking}
-              className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
-            >
-              Book Now
-            </button>
+            {/* add to favourites button  */}
+            <AddToFavouritesBtn/>
+            
+            {/* book events btn  */}
+            <BookNowBtn handleBooking={handleBooking} />
           </div>
         </div>
 

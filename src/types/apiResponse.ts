@@ -7,12 +7,12 @@ export type PageMeta = {
   hasNextPage: boolean;
 };
 export interface ApiResponse<T> {
-  map(
-    arg0: (item: import('./event').EventCategory) => {
-      value: number | undefined;
-      label: string;
-    },
-  ): unknown;
+  // map(
+  //   arg0: (item: import('./event').EventCategory) => {
+  //     value: number | undefined;
+  //     label: string;
+  //   },
+  // ): unknown;
   data: T[];
   meta: PageMeta;
 }

@@ -1,8 +1,11 @@
-import { fetchCustomerProfile } from "@@/apis/auth";
-import { useQuery } from "@tanstack/react-query";
+import { fetchCustomerProfile, updateProfilePicture } from "@@/apis/auth";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchAllInvoices } from "../apis/invoice";
+import toast from "react-hot-toast";
 
 const useProfile = () => {
+  const queryClient = useQueryClient();
+
   const fetchCustomerProfileQuery = useQuery({
     queryKey: ["customer-profile"],
     queryFn: fetchCustomerProfile,
@@ -15,9 +18,19 @@ const useProfile = () => {
     staleTime: Infinity,
   });
 
+  const updateProfilePictureMutation = useMutation({
+    mutationFn: updateProfilePicture,
+    onSuccess:() => {
+      queryClient.invalidateQueries({ queryKey: ["customer-profile"] });
+      queryClient.refetchQueries({ queryKey: ["customer-profile"] });
+      toast.success("Profile Image updated")
+    }
+  })
+
   return {
     fetchCustomerProfileQuery,
     fetchAllInvoicesQuery,
+    updateProfilePictureMutation
   };
 };
 

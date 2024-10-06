@@ -1,4 +1,4 @@
-import AuthLayout from "@@/app/auth.layout";
+import AuthLayout from "@@/app/Layout/auth.layout";
 import FormikInput from "@@/components/Formik/FormikInput";
 import useLogin from "@@/hooks/useLogin";
 import { login } from "@@/redux/slice/auth";
@@ -124,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login

@@ -5,11 +5,12 @@ import { Event } from "@@/types/events";
 const Home = () => {
   const { fetchEventQuery } = useEvent({});
   const { data: events } = fetchEventQuery ?? {};
+  console.log(events)
   return (
     <div className="mt-5 w-full">
       <div className="flex flex-col w-full gap-y-6">
-        {events?.data?.length > 0 ? (
-          events?.data.map((event: Event, i: number) => {
+        {events && events?.length > 0 ? (
+          events?.map((event: Event, i: number) => {
             return (
               <div key={i} className="pb-6 border-b">
                 <EventCard event={event} index={i} />

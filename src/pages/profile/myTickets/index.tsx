@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import ProfileLayout from "@@/app/profile.layout";
+import ProfileLayout from "@@/app/Layout/profile.layout";
 import MyTickets from "@@/components/MyTicketsPDF/MyTickets";
 import useProfile from "@@/hooks/useProfile";
 import { Invoices } from "@@/types/invoices";

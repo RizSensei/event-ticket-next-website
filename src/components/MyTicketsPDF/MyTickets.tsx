@@ -65,8 +65,8 @@ const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
 
                 <View
                   style={{
-                    height: 128, // Fixed height
-                    width: 128, // Fixed width
+                    height: 64, // Fixed height
+                    width: 64, // Fixed width
                     margin: "0 auto",
                     display: "flex",
                     justifyContent: "center", // Center the QR code
@@ -74,13 +74,13 @@ const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
                   }}
                 >
                   <QRCode
-                    size={128} // Size of the QR code (this should match the container size)
+                    size={64} // Size of the QR code (this should match the container size)
                     value={
                       ticket?.ticket_code
                         ? ticket.ticket_code.toString()
                         : "N/A"
                     }
-                    viewBox={`0 0 256 256`}
+                    viewBox={`0 0 128 128`}
                   />
                 </View>
               </View>
@@ -106,7 +106,7 @@ const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
 const styles = StyleSheet.create({
   page: {
     padding: 10,
-    fontSize: "14px",
+    fontSize: "10px",
   },
   title: {
     fontSize: 20,
@@ -118,9 +118,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   grid: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 5,
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "5px", 
   },
   flexGrid: {
     display: "flex",

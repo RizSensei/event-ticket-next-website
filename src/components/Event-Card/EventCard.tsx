@@ -3,10 +3,9 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { BsThreeDots } from "react-icons/bs";
-import { CiHeart } from "react-icons/ci";
 import { FaLocationDot } from "react-icons/fa6";
+import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
 
 const imageUrls = [
   "https://cdn.ticketsanjal.com/images/2024/08/12/124147-MADHYAPUR_MUSIC_FEST_FINAL1%20(1).jpg",
@@ -28,10 +27,6 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
   const handleBooking = () => {
     console.log(isBookingOpen);
     setIsBookingOpen((prev) => !prev);
-  };
-
-  const handleAddToFavourites = () => {
-    toast.success("Added to Favourites");
   };
 
   return (
@@ -58,9 +53,6 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
                 anchor="bottom"
                 className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
               >
-                <button className="py-1.5 px-5 hover:bg-neutral-700">
-                  Add to favourites
-                </button>
                 <button className="py-1.5 px-5 hover:bg-neutral-700">
                   See Details
                 </button>
@@ -96,13 +88,8 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
         </div>
         <div className="mt-3">
           <div className="flex justify-end gap-1">
-            <button
-              onClick={handleAddToFavourites}
-              className="px-3 py-2 flex items-center gap-1 text-xs bg-neutral-800 text-white rounded-md"
-            >
-              <CiHeart />
-              <span>Add to Favourites</span>
-            </button>
+            {/* add to favourites button  */}
+            <AddToFavouritesBtn />
             <button
               onClick={handleBooking}
               className="px-3 py-2 text-xs bg-neutral-900 text-white rounded-md"

@@ -1,16 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axiosClient from "@@/lib/axios";
 import urls from "@@/lib/urls";
+import { Category } from "@@/types/category";
 import { Event } from "@@/types/events";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const fetchAllEvents = async (params: Record<string, any>) => {
-  const response = await axiosClient.get<Event[]>(
+export const fetchAllEvents = async (params: Record<string, any>): Promise<Event[]> => {
+  const response = await axiosClient.get(
     `${urls.API_EVENT}`,
     {
       params: { ...params },
     },
+  );
+  return response?.data?.data;
+};
+
+export const fetchEventCategories = async () => {
+  const response = await axiosClient.get<Category>(
+    `${urls.API_EVENT_CATEGORY}`,
   );
   return response?.data;
 };

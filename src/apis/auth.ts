@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Customer } from "@@/types/auth";
 import axiosClient from "../lib/axios";
 import urls from "../lib/urls";
@@ -13,3 +14,9 @@ export const customerRegister = async (customer: Customer) =>
 //logged in customer profile
 export const fetchCustomerProfile = async () =>
   (await axiosClient.get(urls.API_CUSTOMER_PROFILE)).data;
+
+// update game icon team_icon
+export const updateProfilePicture = async(image:any) => {
+  const response = await axiosClient.patch(`${urls.API_CUSTOMER}/update-profile-picture`,image);
+  return response?.data?.data;
+}

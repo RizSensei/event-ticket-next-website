@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
-import RootLayout from "../app/layout";
+import RootLayout from "../app/Layout/layout";
 import { store } from "../redux/store/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";

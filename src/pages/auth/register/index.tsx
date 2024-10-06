@@ -1,4 +1,4 @@
-import AuthLayout from "@@/app/auth.layout";
+import AuthLayout from "@@/app/Layout/auth.layout";
 import FormikInput from "@@/components/Formik/FormikInput";
 import useRegister from "@@/hooks/useRegister";
 import { Customer } from "@@/types/auth";

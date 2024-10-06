@@ -16,8 +16,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TbFileInvoice } from "react-icons/tb";
 import { useDispatch } from "react-redux";
-import SearchBar from '../components/Search/SearchBar';
-import "./globals.css";
+import SearchBar from '../../components/Search/SearchBar';
+import "../globals.css";
 import PageLayout from "./page.layout";
 
 export default function RootLayout({
@@ -103,7 +103,7 @@ export default function RootLayout({
                             <span>Tickets</span>
                           </Link>
                           <Link
-                            href={"/profile/favourites"}
+                            href={"/profile/notifications"}
                             className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
                           >
                             <FiBell />

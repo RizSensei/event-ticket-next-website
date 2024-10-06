@@ -1,10 +1,10 @@
-import React from "react";
-import ProfileLayout from "../../app/profile.layout";
+import { logout } from "@@/redux/slice/auth";
+import { useAppDispatch, useAppSelector } from "@@/redux/store/hooks";
+import { RootState } from "@@/redux/store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@@/redux/store/hooks";
-import { logout } from "@@/redux/slice/auth";
-import { RootState } from "@@/redux/store/store";
+import ProfileLayout from "../../app/Layout/profile.layout";
+// import withProfile from "../../hoc/withProfile";
 
 const Profile = () => {
   const router = useRouter();
@@ -62,7 +62,7 @@ const Profile = () => {
         </Link>
         <button
           onClick={handleLogout}
-          className="px-2 py-2 bg-red-500 text-white flex-1 rounded-md"
+          className="px-2 py-2 bg-neutral-950 text-white flex-1 rounded-md"
         >
           Log Out
         </button>

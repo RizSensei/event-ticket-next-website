@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiMiniXMark } from "react-icons/hi2";
-import ProfileLayout from "../../../app/profile.layout";
+import ProfileLayout from "../../../app/Layout/profile.layout";
 
 const Favourites = () => {
   return (

@@ -18,7 +18,7 @@ const FilterLayout = ({ label, data }: FilterLayoutProps) => {
   return (
     <div>
       <h1 className="mt-6 text-neutral-800 font-semibold text-sm">{label}</h1>
-      <div className="mt-2 h-full grid grid-cols-2 gap-2">
+      <div className="mt-2 h-full grid grid-cols-3 gap-2">
         {data
           .slice(0, items)
           .map((filter: { name: string | undefined }, i: number) => {
