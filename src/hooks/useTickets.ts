@@ -1,5 +1,6 @@
 import { bookTickets, fetchTicketType } from "@@/apis/event";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export interface TicketParameter {
   id?: number | string | string[] | undefined;
@@ -21,6 +22,9 @@ const useTickets = (props: TicketParameter) =>
 
     const bookTicketsMutation = useMutation({
       mutationFn: bookTickets,
+      onError: () => {
+        toast.error("Insufficient Data to book tickets")
+      }
     });
 
     return {

@@ -48,7 +48,13 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              style: {
+                zIndex: 99999,
+              },
+            }}
+          />
           {isSpecialPage ? (
             <Component {...pageProps} />
           ) : (

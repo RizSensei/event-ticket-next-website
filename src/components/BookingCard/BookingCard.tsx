@@ -85,7 +85,7 @@ const BookingCard = ({
   };
 
   return (
-    <div className="z-[9999] absolute inset-0 bg-black bg-opacity-75 h-full w-full">
+    <div className="z-[999] absolute inset-0 bg-black bg-opacity-75 h-full w-full">
       <div className="fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
         <div className="rounded-md w-[400px] bg-white p-5">
           {/* Header */}
@@ -132,7 +132,7 @@ const BookingCard = ({
             onSubmit={handleSubmit}
             enableReinitialize
           >
-            {({ values, isSubmitting, setFieldValue, resetForm }) => (
+            {({ values, setFieldValue, resetForm }) => (
               <Form>
                 {selectedTicketType.name && data && (
                   <>
@@ -213,14 +213,14 @@ const BookingCard = ({
                     <button
                       type="button"
                       onClick={() => handleClearData(resetForm)}
-                      className="px-3 py-1.5 bg-neutral-900 text-white rounded-md"
+                      className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
                     >
                       Clear
                     </button>
                     <button
                       type="button"
                       onClick={handleBooking}
-                      className="px-3 py-1.5 bg-neutral-900 text-white rounded-md"
+                      className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
                     >
                       Cancel
                     </button>
@@ -229,7 +229,7 @@ const BookingCard = ({
                     type="submit"
                     className="px-3 py-1.5 bg-neutral-900 text-white rounded-md"
                   >
-                    {isSubmitting ? "Submitting" : "Book"}
+                    Book
                   </button>
                 </div>
               </Form>

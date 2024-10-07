@@ -72,7 +72,7 @@ const Event = () => {
             <h1>Organizer</h1>
             <hr className="flex-grow" />
           </div>
-          <p className="font-sans text-sm text-gray-500">Kharba Pvt. Ltd</p>
+          <p className="font-sans text-sm text-gray-500">{event?.organizer}</p>
         </div>
 
         <div className="mt-3 flex flex-col gap-1 text-light-black">

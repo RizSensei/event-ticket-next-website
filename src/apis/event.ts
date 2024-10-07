@@ -37,7 +37,7 @@ export const fetchEventTicketTypes = async (eventId: number | string | string[] 
     const response = await axiosClient.get(
       `${urls.API_EVENT}/${eventId}/ticket-types`,
     );
-    return response?.data?.data;
+    return response?.data;
   };
 
 //get ticket type information  

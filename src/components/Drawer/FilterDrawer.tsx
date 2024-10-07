@@ -1,29 +1,28 @@
-import { useSpring, animated } from "react-spring";
+// import { useSpring, animated } from "react-spring";
 import { HiMiniXMark } from "react-icons/hi2";
 import FilterLayout from "../FilterLayout/FilterLayout";
 import useEvents from "@@/hooks/useEvents";
 
 interface FilterDrawerProps {
-  isFilterDrawerOpen: boolean;
-  handleFilterDrawer: () => void;
+  isFilterDrawerOpen?: boolean;
+  handleFilterDrawer?: () => void;
 }
 
 const FilterDrawer = ({
   handleFilterDrawer,
-  isFilterDrawerOpen,
+  // isFilterDrawerOpen,
 }: FilterDrawerProps) => {
   const { fetchEventCategoiesQuery } = useEvents({});
   const { data: categories } = fetchEventCategoiesQuery;
 
-  const filterDrawerStyles = useSpring({
-    transform: isFilterDrawerOpen ? "translateY(0%)" : "translateY(100%)",
-    opacity: isFilterDrawerOpen ? 1 : 0,
-    config: { tension: 220, friction: 20 },
-  });
+  // const filterDrawerStyles = useSpring({
+  //   transform: isFilterDrawerOpen ? "translateY(0%)" : "translateY(100%)",
+  //   opacity: isFilterDrawerOpen ? 1 : 0,
+  //   config: { tension: 220, friction: 20 },
+  // });
 
   return (
-    <animated.div
-      style={filterDrawerStyles}
+    <div
       className="z-50 max-w-md w-full fixed bottom-0 bg-white pt-3 rounded-t-3xl border-t border-gray-400"
     >
       <div className="overflow-y-auto h-full px-8">
@@ -51,7 +50,7 @@ const FilterDrawer = ({
           Apply Filter
         </button>
       </div>
-    </animated.div>
+    </div>
   );
 };
 
