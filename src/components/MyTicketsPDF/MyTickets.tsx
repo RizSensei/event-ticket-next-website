@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import { IoMdDownload } from "react-icons/io";
 import QRCode from "qrcode";
 import ReactQRCode from "react-qr-code"; // Import react-qr-code
+import PageLoader from "../PageLoader/PageLoader";
 
 // Create the PDF document component
 const MyDocument = ({
@@ -246,7 +247,8 @@ const MyTickets = ({ id }: { id: string | undefined }) => {
   };
 
   const { fetchInvoiceDetailQuery } = useInvoice({ id });
-  const { data: invoice } = fetchInvoiceDetailQuery;
+  const { data: invoice, isLoading } = fetchInvoiceDetailQuery;
+  if (isLoading) return <PageLoader />;
 
   return (
     <div>

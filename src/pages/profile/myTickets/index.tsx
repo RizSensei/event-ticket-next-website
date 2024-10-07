@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ProfileLayout from "@@/app/Layout/profile.layout";
 import MyTickets from "@@/components/MyTicketsPDF/MyTickets";
+import PageLoader from "@@/components/PageLoader/PageLoader";
 import useProfile from "@@/hooks/useProfile";
 import { Invoices } from "@@/types/invoices";
 import { useQueryClient } from "@tanstack/react-query";
@@ -8,13 +9,18 @@ import { useEffect } from "react";
 
 const BookedTickets = () => {
   const { fetchAllInvoicesQuery, fetchCustomerProfileQuery } = useProfile();
-  const { data: profile } = fetchCustomerProfileQuery;
-  const { data: invoices } = fetchAllInvoicesQuery ?? {};
+  const { data: profile, isLoading: profileLoading } =
+    fetchCustomerProfileQuery;
+  const { data: invoices, isLoading: invoiceLoading } =
+    fetchAllInvoicesQuery ?? {};
   const queryClient = useQueryClient();
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ["customer-profile"] });
     queryClient.invalidateQueries({ queryKey: ["invoices"] });
   }, [queryClient]);
+
+  if (invoiceLoading || profileLoading) return <PageLoader />;
+
   return (
     <ProfileLayout profile={profile}>
       <div className="mt-10">

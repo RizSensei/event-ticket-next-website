@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProfileLayout from "../../app/Layout/profile.layout";
+import PageLoader from "@@/components/PageLoader/PageLoader";
 // import withProfile from "../../hoc/withProfile";
 
 const Profile = () => {
@@ -27,10 +28,12 @@ const Profile = () => {
   // const { profile } = profileData;
 
   const handleLogout = () => {
-    dispatch(logout());
-    router.push("/");
+    if (confirm("Are you sure want to logout ?")) {
+      dispatch(logout());
+      router.push("/");
+    }
   };
-  if (profile === null) return <h1>Loading. .</h1>;
+  if (profile === null) return <PageLoader />;
   return (
     <ProfileLayout profile={profile}>
       <div className="mt-5 flex gap-2">

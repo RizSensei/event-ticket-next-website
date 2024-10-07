@@ -1,4 +1,4 @@
-import AddToFavouritesBtn from "@@/components/AddToFavourites/AddToFavouritesBtn";
+// import AddToFavouritesBtn from "@@/components/AddToFavourites/AddToFavouritesBtn";
 import BookNowBtn from "@@/components/BookNow/BookNowBtn";
 import useEvents from "@@/hooks/useEvents";
 import { TicketType } from "@@/types/ticketType";
@@ -55,7 +55,7 @@ const Event = () => {
         <div className="mt-3">
           <div className="flex justify-end gap-1">
             {/* add to favourites button  */}
-            <AddToFavouritesBtn />
+            {/* <AddToFavouritesBtn /> */}
 
             {/* book events btn  */}
             <BookNowBtn

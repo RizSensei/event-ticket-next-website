@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import FilterDrawer from "@@/components/Drawer/FilterDrawer";
 import EventCard from "@@/components/Event-Card/EventCard";
+import PageLoader from "@@/components/PageLoader/PageLoader";
 import useEvent from "@@/hooks/useEvents";
 import { Event } from "@@/types/events";
 import { useState } from "react";
@@ -32,7 +33,8 @@ const Home = () => {
   };
 
   const { fetchEventQuery } = useEvent({});
-  const { data: events } = fetchEventQuery ?? {};
+  const { data: events, isLoading } = fetchEventQuery ?? {};
+  if (isLoading) return <PageLoader />;
   return (
     <div>
       {/* <div className="mt-1 flex justify-start gap-1">
@@ -46,13 +48,11 @@ const Home = () => {
       <div className="mt-5 w-full">
         <div className="flex flex-col w-full gap-y-6">
           {events && events?.length > 0 ? (
-            events?.map((event: Event, i: number) => {
-              return (
-                <div key={i} className="pb-6 border-b">
-                  <EventCard event={event} index={i} />
-                </div>
-              );
-            })
+            events?.map((event: Event, i: number) => (
+              <div key={i} className="pb-6 border-b">
+                <EventCard event={event} index={i} />
+              </div>
+            ))
           ) : (
             <h1 className="text-center text-neutral-700">
               Currently No Events Organized

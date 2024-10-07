@@ -25,13 +25,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isTopDrawerOpen, setIsTopDrawerOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(true); // Track popover state
+
   const { isAuthenticated } = useContext(AuthContext);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const handleLogout = () => {
-    dispatch(logout());
-    router.push("/");
+    if (confirm("Are you sure want to logout ?")) {
+      dispatch(logout());
+      router.push("/");
+    }
   };
 
   const handleTopDrawer = () => {
@@ -51,7 +55,6 @@ export default function RootLayout({
                     <Image src={Logo.src} alt="" width={150} height={75} />
                   </Link>
                   <button onClick={handleTopDrawer}>
-                    {" "}
                     <GiHamburgerMenu />
                   </button>
                 </div>
@@ -66,75 +69,84 @@ export default function RootLayout({
                   </button> */}
 
                   <Popover className="relative">
-                    <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800 focus:outline-none">
-                      <FaUser />
-                    </PopoverButton>
-                    <PopoverPanel
-                      anchor="bottom"
-                      className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
-                    >
-                      {isAuthenticated ? (
-                        <>
-                          <Link
-                            href={"/profile"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <FaRegUser />
-                            <span>Profile</span>
-                          </Link>
-                          <Link
-                            href={"/profile/favourites"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <IoIosHeartEmpty />
-                            <span>Favourites</span>
-                          </Link>
-                          <Link
-                            href={"/profile/myTickets"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <TbFileInvoice />
-                            <span>Tickets</span>
-                          </Link>
-                          <Link
-                            href={"/profile/notifications"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <FiBell />
-                            <span className="flex items-center gap-1">
-                              Notifications{" "}
-                              {/* <span className="text-sm font-sans font-semibold h-4 w-4 rounded-full bg-white text-neutral-700 flex flex-col items-center justify-center">
-                                2
-                              </span> */}
-                            </span>
-                          </Link>
-                          <button
-                            onClick={handleLogout}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <BiLogOut />
-                            <span>Log Out</span>
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <Link
-                            href={"/auth/login"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <BiLogIn />
-                            <span>Login</span>
-                          </Link>
-                          <Link
-                            href={"/auth/register"}
-                            className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
-                          >
-                            <BiLogIn />
-                            <span>Register</span>
-                          </Link>
-                        </>
-                      )}
-                    </PopoverPanel>
+                    {({ close }) => (
+                      <>
+                        <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800 focus:outline-none">
+                          <FaUser />
+                        </PopoverButton>
+                        <PopoverPanel
+                          anchor="top end"
+                          className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
+                        >
+                          {isAuthenticated ? (
+                            <>
+                              <Link
+                                onClick={() => close()}
+                                href={"/profile"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <FaRegUser />
+                                <span>Profile</span>
+                              </Link>
+
+                              {/* <Link
+                                onClick={() => close()}
+                                href={"/profile/favourites"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <IoIosHeartEmpty />
+                                <span>Favourites</span>
+                              </Link> */}
+                              <Link
+                                onClick={() => close()}
+                                href={"/profile/myTickets"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <TbFileInvoice />
+                                <span>Tickets</span>
+                              </Link>
+                              {/* <Link
+                                onClick={() => close()}
+                                href={"/profile/notifications"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <FiBell />
+                                <span className="flex items-center gap-1">
+                                  Notifications
+                                  <span className="text-sm font-sans font-semibold h-4 w-4 rounded-full bg-white text-neutral-700 flex flex-col items-center justify-center">
+                                    2
+                                  </span>
+                                </span>
+                              </Link> */}
+                              <button
+                                onClick={handleLogout}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <BiLogOut />
+                                <span>Log Out</span>
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <Link
+                                href={"/auth/login"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <BiLogIn />
+                                <span>Login</span>
+                              </Link>
+                              <Link
+                                href={"/auth/register"}
+                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                              >
+                                <BiLogIn />
+                                <span>Register</span>
+                              </Link>
+                            </>
+                          )}
+                        </PopoverPanel>
+                      </>
+                    )}
                   </Popover>
                 </div>
                 {children}
