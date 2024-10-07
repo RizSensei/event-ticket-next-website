@@ -6,8 +6,7 @@ import ProfileLayout from "../../../app/Layout/profile.layout";
 
 const Favourites = () => {
   return (
-    <ProfileLayout>
-
+    <ProfileLayout profile={{}}>
       <div className="mt-10">
         <div className="flex gap-5 items-center">
           <h1 className="font-semibold text-lg text-gray-800">

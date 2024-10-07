@@ -28,9 +28,10 @@ const useEvents = (props: EventParameter) =>
         // limit,
         // sort,
       ],
-      queryFn: () => 
+      queryFn: () =>
         fetchAllEvents({
-          term: term || undefined, 
+          term: term || undefined,
+          status: "Published",
         }),
       // enabled: !!term,
       staleTime: Infinity,

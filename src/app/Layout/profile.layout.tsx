@@ -1,37 +1,35 @@
 import ImageUploadBtn from "@@/components/ProfileImageUpload/ImageUploadBtn";
-import { AuthContext } from "@@/context/AuthContext";
-import useProfile from "@@/hooks/useProfile";
-import { setProfile } from "@@/redux/slice/auth";
-import { useAppDispatch } from "@@/redux/store/hooks";
+import { Customer } from "@@/types/customer";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 
 interface ProfileLayoutInterface {
   children: React.ReactNode;
+  profile: Customer;
 }
 
-const ProfileLayout = ({ children }: ProfileLayoutInterface) => {
+const ProfileLayout = ({ children, profile }: ProfileLayoutInterface) => {
   const router = useRouter();
-  const { isAuthenticated } = useContext(AuthContext);
-  const dispatch = useAppDispatch();
+  // const { isAuthenticated } = useContext(AuthContext);
+  // const dispatch = useAppDispatch();
 
-  const { fetchCustomerProfileQuery } = useProfile();
-  const { data: profile, refetch } = fetchCustomerProfileQuery ?? {};
+  // const { fetchCustomerProfileQuery } = useProfile();
+  // const { data: profile, refetch } = fetchCustomerProfileQuery ?? {};
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch(setProfile(null));
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(setProfile(null));
-      refetch().then((result) => {
-        if (result?.data) {
-          dispatch(setProfile(result.data));
-        }
-      });
-    } else {
-      dispatch(setProfile(null));
-    }
-  }, [isAuthenticated, refetch, dispatch]);
+  //     refetch().then((result) => {
+  //       if (result?.data) {
+  //         dispatch(setProfile(result.data));
+  //       }
+  //     });
+  //   } else {
+  //     dispatch(setProfile(null));
+  //   }
+  // }, [isAuthenticated, refetch, dispatch]);
 
   return (
     <div className="relative mt-5">

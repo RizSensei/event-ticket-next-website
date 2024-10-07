@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
-import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
+// import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
 import BookNowBtn from "../BookNow/BookNowBtn";
 
 const imageUrls = [
@@ -73,23 +73,20 @@ const EventCard = ({ event, index }: { event: Event; index: number }) => {
                 />
               </>
             ) : (
-              <>
-                {" "}
-                <Image
-                  src={imageUrls[index]}
-                  alt=""
-                  height={1550}
-                  width={1550}
-                  className="h-full w-full object-cover"
-                />
-              </>
+              <Image
+                src={"/images/logo/logo.png"}
+                alt=""
+                height={1550}
+                width={1550}
+                className="h-full w-50 object-contain grayscale opacity-10"
+              />
             )}
           </Link>
         </div>
         <div className="mt-3">
           <div className="flex justify-end gap-1">
             {/* add to favourites button  */}
-            <AddToFavouritesBtn />
+            {/* <AddToFavouritesBtn /> */}
             <BookNowBtn
               id={event?.id}
               handleBooking={handleBooking}

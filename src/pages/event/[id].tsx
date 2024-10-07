@@ -12,7 +12,9 @@ const Event = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { fetchEventDetailQuery,fetchEventTicketTypesQuery } = useEvents({ id: id });
+  const { fetchEventDetailQuery, fetchEventTicketTypesQuery } = useEvents({
+    id: id,
+  });
   const { data: event } = fetchEventDetailQuery;
   const { data: ticketType } = fetchEventTicketTypesQuery;
 
@@ -39,15 +41,15 @@ const Event = () => {
           </div>
         </div>
         <div className="relative h-[500px] w-full rounded-md overflow-hidden">
-          <Image
-            src={
-              "https://cdn.ticketsanjal.com/images/2024/09/22/110110-WhatsApp%20Image%202024-09-22%20at%202.40.12%20PM.jpeg"
-            }
-            alt=""
-            height={1920}
-            width={1920}
-            className="h-full w-full object-cover"
-          />
+          {event?.banner_photo && (
+            <Image
+              src={event?.banner_photo}
+              alt=""
+              height={1920}
+              width={1920}
+              className="h-full w-full object-cover"
+            />
+          )}
         </div>
 
         <div className="mt-3">

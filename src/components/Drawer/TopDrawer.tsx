@@ -11,7 +11,7 @@ interface TopDrawerProps {
 
 const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
   return (
-    <div className="z-10 max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white px-5 md:px-12  border-t border-gray-400 overflow-y-auto">
+    <div className="z-20 max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white px-5 md:px-12  border-t border-gray-400 overflow-y-auto">
       <div className="h-screen">
         <div className="py-5">
           <div className="w-full flex items-center justify-between">

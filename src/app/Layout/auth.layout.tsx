@@ -1,7 +1,7 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
-import Logo from "@/images/logo/logo.png";
+// import Logo from "@/images/logo/logo.png";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -10,11 +10,11 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children, title }: AuthLayoutProps) => {
   return (
-    <div className="h-screen w-full grid place-items-center">
+    <div className="h-screen flex justify-center m-4">
       <div className="flex flex-col gap-5 max-w-xs w-full">
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Image src={Logo.src} alt="" width={200} height={125} />
-        </div>
+        </div> */}
         <div className="mt-5 flex items-center justify-between gap-5">
           <hr className="flex-grow" />
           <h1 className="font-sans text-neutral-800 font-semibold text-xl">

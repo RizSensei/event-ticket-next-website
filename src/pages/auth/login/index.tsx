@@ -32,7 +32,7 @@ const Login = () => {
     try {
       await customerLoginMutation.mutateAsync(values, {
         onSuccess: (data: LoginResponse) => {
-          if(data.access_token){
+          if (data.access_token) {
             dispatch(login({ token: data.access_token }));
           }
           resetForm();
@@ -124,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

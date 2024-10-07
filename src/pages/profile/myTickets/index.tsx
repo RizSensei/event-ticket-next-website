@@ -3,12 +3,20 @@ import ProfileLayout from "@@/app/Layout/profile.layout";
 import MyTickets from "@@/components/MyTicketsPDF/MyTickets";
 import useProfile from "@@/hooks/useProfile";
 import { Invoices } from "@@/types/invoices";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const BookedTickets = () => {
-  const { fetchAllInvoicesQuery } = useProfile();
+  const { fetchAllInvoicesQuery, fetchCustomerProfileQuery } = useProfile();
+  const { data: profile } = fetchCustomerProfileQuery;
   const { data: invoices } = fetchAllInvoicesQuery ?? {};
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ["customer-profile"] });
+    queryClient.invalidateQueries({ queryKey: ["invoices"] });
+  }, [queryClient]);
   return (
-    <ProfileLayout>
+    <ProfileLayout profile={profile}>
       <div className="mt-10">
         <div className="flex gap-5 items-center">
           <h1 className="font-semibold text-lg text-gray-800">Your Tickets</h1>
@@ -29,7 +37,7 @@ const BookedTickets = () => {
                         <h1 className="w-full font-semibold text-neutral-900">
                           {invoice?.event?.name}
                         </h1>
-                        <MyTickets id={invoice?.id}/>
+                        <MyTickets id={invoice?.id} />
                       </div>
                       <div className="text-sm grid grid-cols-2 py-1">
                         <h1>Tickets: {invoice?.total_quantity}</h1>
@@ -44,7 +52,9 @@ const BookedTickets = () => {
                 );
               })
             ) : (
-              <h1 className="text-center text-neutral-700">No Tickets Bought !</h1>
+              <h1 className="text-center text-neutral-700">
+                No Tickets Bought !
+              </h1>
             )}
           </div>
         </div>

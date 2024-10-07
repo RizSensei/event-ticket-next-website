@@ -15,7 +15,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TbFileInvoice } from "react-icons/tb";
 import { useDispatch } from "react-redux";
-import SearchBar from '../../components/Search/SearchBar';
+import SearchBar from "../../components/Search/SearchBar";
 import "../globals.css";
 import PageLayout from "./page.layout";
 
@@ -33,8 +33,6 @@ export default function RootLayout({
     dispatch(logout());
     router.push("/");
   };
-
-
 
   const handleTopDrawer = () => {
     setIsTopDrawerOpen((prev) => !prev);
@@ -58,7 +56,7 @@ export default function RootLayout({
                   </button>
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-2">
-                  <SearchBar/>
+                  <SearchBar />
 
                   {/* <button
                     onClick={handleFilterDrawer}

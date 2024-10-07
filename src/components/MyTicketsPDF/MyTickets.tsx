@@ -13,21 +13,30 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdDownload } from "react-icons/io";
-import QRCode from "react-qr-code";
+import QRCode from "qrcode";
+import ReactQRCode from "react-qr-code"; // Import react-qr-code
 
 // Create the PDF document component
-const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
+const MyDocument = ({
+  invoiceData,
+  qrCodes,
+  isGenerate,
+}: {
+  invoiceData: Invoices;
+  qrCodes: string[];
+  isGenerate: boolean;
+}) => {
+  const dateTime = invoiceData?.event?.start_date;
+  const date = dateTime && new Date(dateTime).toISOString().split("T")[0];
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.grid}>
-          {invoiceData?.tickets?.map((ticket: Tickets) =>{
-            const dateTime = invoiceData?.event?.start_date;
-            const date = dateTime &&  new Date(dateTime).toISOString().split('T')[0];
-            return (
-            <View key={invoiceData?.id} style={styles.card}>
+          {invoiceData?.tickets?.map((ticket: Tickets, index: number) => (
+            <View key={ticket.id} style={styles.card}>
               <Image src={Logo.src} style={styles.logo} />
               <View style={styles.justifyFlexGrid}>
                 <View>
@@ -37,14 +46,12 @@ const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
                   </View>
                   <View style={styles.flexGrid}>
                     <Text>Event Date:</Text>
-                    <Text style={styles.label}>
-                      {date}
-                    </Text>
+                    <Text style={styles.label}>{date}</Text>
                   </View>
                   <View style={styles.flexGrid}>
                     <Text>Venue:</Text>
                     <Text style={styles.label}>
-                      {invoiceData?.event?.venue_name},
+                      {invoiceData?.event?.venue_name},{" "}
                       {invoiceData?.event?.venue_address}
                     </Text>
                   </View>
@@ -62,30 +69,52 @@ const MyDocument = ({ invoiceData }: {invoiceData:Invoices}) => {
                     </Text>
                   </View>
                 </View>
-
-                <View
-                  style={{
-                    height: 64, // Fixed height
-                    width: 64, // Fixed width
-                    margin: "0 auto",
-                    display: "flex",
-                    justifyContent: "center", // Center the QR code
-                    alignItems: "center", // Center the QR code
-                  }}
-                >
-                  <QRCode
-                    size={64} // Size of the QR code (this should match the container size)
-                    value={
-                      ticket?.ticket_code
-                        ? ticket.ticket_code.toString()
-                        : "N/A"
-                    }
-                    viewBox={`0 0 128 128`}
-                  />
-                </View>
+                {!isGenerate && (
+                  <View
+                    style={{
+                      margin: "0 auto",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <ReactQRCode
+                      size={100}
+                      value={
+                        ticket?.ticket_code
+                          ? ticket.ticket_code.toString()
+                          : "N/A"
+                      }
+                      viewBox={`0 0 128 128`}
+                    />
+                  </View>
+                )}
+                {isGenerate && (
+                  <View
+                    style={{
+                      height: 150,
+                      width: 150,
+                      margin: "0 auto",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: -50,
+                    }}
+                  >
+                    {qrCodes[index] && (
+                      <Image
+                        src={qrCodes[index]}
+                        style={{
+                          width: 150,
+                          height: 150,
+                        }}
+                      />
+                    )}
+                  </View>
+                )}
               </View>
             </View>
-          )})}
+          ))}
           <View style={styles.justifyFlexGrid}>
             <View style={styles.flexGrid}>
               <Text>Total Tickets:</Text>
@@ -108,10 +137,6 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: "10px",
   },
-  title: {
-    fontSize: 20,
-    marginBottom: 10,
-  },
   logo: {
     width: 75,
     height: 25,
@@ -120,8 +145,8 @@ const styles = StyleSheet.create({
   grid: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap", // Allows wrapping like a grid
-    gap: 5,
+    flexWrap: "wrap",
+    gap: 10,
   },
   flexGrid: {
     display: "flex",
@@ -132,7 +157,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 10
+    gap: 10,
   },
   label: {
     fontWeight: "bold",
@@ -147,30 +172,64 @@ const styles = StyleSheet.create({
 });
 
 // PDF Viewer Component
-const PDFViewer = ({ onClose, invoiceData }: {onClose : () => void, invoiceData: Invoices}) => {
+const PDFViewer = ({
+  onClose,
+  invoiceData,
+}: {
+  onClose: () => void;
+  invoiceData: Invoices;
+}) => {
+  const [qrCodes, setQRCodes] = useState<string[]>([]);
+  // const [isGenerate] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Generate QR codes for all tickets
+    const generateQRCodes = async () => {
+      if (invoiceData?.tickets) {
+        const qrCodePromises = invoiceData.tickets.map((ticket: Tickets) =>
+          QRCode.toDataURL(ticket?.ticket_code?.toString() || "")
+        );
+        const qrCodesGenerated = await Promise.all(qrCodePromises);
+        setQRCodes(qrCodesGenerated);
+      }
+    };
+
+    generateQRCodes();
+  }, [invoiceData]);
+
   return (
     <div className="z-20 fixed inset-0 bg-white h-screen w-full overflow-y-scroll no-scrollbar">
-  <div className="relative bg-white max-w-lg mx-auto my-10 w-full p-4">
-    <MyDocument invoiceData={invoiceData} />
+      <div className="relative bg-white max-w-lg mx-auto my-10 w-full p-4">
+        {/* Pass QR codes to the document / isGenerate false only in preview mode*/}
+        <MyDocument
+          isGenerate={false}
+          invoiceData={invoiceData}
+          qrCodes={qrCodes}
+        />
 
-    <div className="flex justify-center gap-2 mt-4">
-      <button
-        onClick={onClose}
-        className="text-sm bg-neutral-700 text-white px-2 py-2 rounded-md"
-      >
-        Close Preview
-      </button>
-      <PDFDownloadLink
-        document={<MyDocument invoiceData={invoiceData} />}
-        fileName="my-document.pdf"
-        className="text-sm bg-neutral-900 text-white px-2 py-2 rounded-md"
-      >
-        Download PDF
-      </PDFDownloadLink>
+        <div className="flex justify-center gap-2 mt-4">
+          <button
+            onClick={onClose}
+            className="text-sm bg-neutral-700 text-white px-2 py-2 rounded-md"
+          >
+            Close Preview
+          </button>
+          <PDFDownloadLink
+            document={
+              <MyDocument
+                isGenerate={true}
+                invoiceData={invoiceData}
+                qrCodes={qrCodes}
+              />
+            }
+            fileName="my-document.pdf"
+            className="text-sm bg-neutral-900 text-white px-2 py-2 rounded-md"
+          >
+            Download PDF
+          </PDFDownloadLink>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
