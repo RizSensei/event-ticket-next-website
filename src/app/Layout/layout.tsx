@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegUser, FaUser } from "react-icons/fa6";
-import { FiBell } from "react-icons/fi";
+// import { FiBell } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoIosHeartEmpty } from "react-icons/io";
+// import { IoIosHeartEmpty } from "react-icons/io";
 import { TbFileInvoice } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import SearchBar from "../../components/Search/SearchBar";
@@ -25,7 +25,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isTopDrawerOpen, setIsTopDrawerOpen] = useState(false);
-  const [isPopoverOpen, setIsPopoverOpen] = useState(true); // Track popover state
 
   const { isAuthenticated } = useContext(AuthContext);
   const dispatch = useDispatch();
