@@ -4,28 +4,26 @@ import EventCard from "@@/components/Event-Card/EventCard";
 import useEvent from "@@/hooks/useEvents";
 import { Event } from "@@/types/events";
 import { useState } from "react";
-import { HiMiniXMark } from "react-icons/hi2";
-import { MdArrowOutward } from "react-icons/md";
 
-const ButtonLayout = ({
-  label,
-  icon,
-  onClick,
-}: {
-  label: string;
-  icon: any;
-  onClick?: () => void;
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      className="text-xs px-3 py-1 flex gap-1 items-center font-semibold text-neutral-300 bg-neutral-900 rounded-full"
-    >
-      <h1>{label}</h1>
-      <span>{icon}</span>
-    </button>
-  );
-};
+// const ButtonLayout = ({
+//   label,
+//   icon,
+//   onClick,
+// }: {
+//   label: string;
+//   icon: any;
+//   onClick?: () => void;
+// }) => {
+//   return (
+//     <button
+//       onClick={onClick}
+//       className="text-xs px-3 py-1 flex gap-1 items-center font-semibold text-neutral-300 bg-neutral-900 rounded-full"
+//     >
+//       <h1>{label}</h1>
+//       <span>{icon}</span>
+//     </button>
+//   );
+// };
 
 const Home = () => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);

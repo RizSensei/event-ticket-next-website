@@ -8,22 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 // import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
 import BookNowBtn from "../BookNow/BookNowBtn";
 
-const imageUrls = [
-  "https://cdn.ticketsanjal.com/images/2024/08/12/124147-MADHYAPUR_MUSIC_FEST_FINAL1%20(1).jpg",
-  "https://cdn.ticketsanjal.com/images/2024/09/16/105420-Dashain%20Night.jpg",
-  "https://cdn.ticketsanjal.com/images/2024/07/01/042945-WhatsApp%20Image%202024-07-01%20at%2010.14.02%20PM.jpeg",
-  "https://cdn.ticketsanjal.com/images/2024/06/09/052110-CLASH%20OF%20DANCERS%20(1).png",
-  "https://cdn.ticketsanjal.com/images/2024/05/27/082938-Mid-Bhaktapur%20Music%20Fest%20(3).png",
-  "https://cdn.ticketsanjal.com/images/2023/11/28/094549-Kaal%20.png",
-  "https://cdn.ticketsanjal.com/images/2024/08/12/124147-MADHYAPUR_MUSIC_FEST_FINAL1%20(1).jpg",
-  "https://cdn.ticketsanjal.com/images/2024/09/16/105420-Dashain%20Night.jpg",
-  "https://cdn.ticketsanjal.com/images/2024/07/01/042945-WhatsApp%20Image%202024-07-01%20at%2010.14.02%20PM.jpeg",
-  "https://cdn.ticketsanjal.com/images/2024/06/09/052110-CLASH%20OF%20DANCERS%20(1).png",
-  "https://cdn.ticketsanjal.com/images/2024/05/27/082938-Mid-Bhaktapur%20Music%20Fest%20(3).png",
-  "https://cdn.ticketsanjal.com/images/2023/11/28/094549-Kaal%20.png",
-];
-
-const EventCard = ({ event, index }: { event: Event; index: number }) => {
+const EventCard = ({ event }: { event: Event; index: number }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const handleBooking = () => {
     setIsBookingOpen((prev) => !prev);
