@@ -3,7 +3,7 @@ import useTickets from "@@/hooks/useTickets";
 import { Event } from "@@/types/events";
 import { TicketType } from "@@/types/ticketType";
 import { Form, Formik, FormikHelpers } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { HiMiniXMark } from "react-icons/hi2";
 
@@ -27,6 +27,12 @@ const BookingCard = ({
     id: selectedTicketType.id,
   });
   const { data } = fetchTicketTypeQuery;
+
+  useEffect(() => {
+    if (ticketType?.length) {
+      setSelectedTicketType(ticketType[0]);
+    }
+  }, [ticketType]);
 
   const handleTicketType = (type: TicketType) =>
     setSelectedTicketType(type || {});
@@ -186,7 +192,7 @@ const BookingCard = ({
                         Select Payment Method
                       </h1>
                       <div className="mt-1 flex flex-wrap gap-2">
-                        {["eSewa", "Fonepay", "IME Pay"].map((payment) => {
+                        {["eSewa", "Fonepay", "IME Pay", "Cash"].map((payment) => {
                           return (
                             <button
                               key={payment}
@@ -212,17 +218,17 @@ const BookingCard = ({
                   <div className="flex gap-1">
                     <button
                       type="button"
-                      onClick={() => handleClearData(resetForm)}
-                      className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
-                    >
-                      Clear
-                    </button>
-                    <button
-                      type="button"
                       onClick={handleBooking}
                       className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
                     >
                       Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleClearData(resetForm)}
+                      className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
+                    >
+                      Clear
                     </button>
                   </div>
                   <button

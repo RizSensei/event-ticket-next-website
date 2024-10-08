@@ -41,9 +41,9 @@ const ProfileLayout = ({ children, profile }: ProfileLayoutInterface) => {
       <div className="py-2">
         <div className="flex flex-col items-center">
           <div className="relative h-20 w-20 flex flex-col items-center justify-center rounded-full border-4 border-neutral-800">
-            {profile?.profile_picture ? (
+            {profile?.photo ? (
               <Image
-                src={profile?.profile_picture}
+                src={profile?.photo}
                 alt=""
                 height={1550}
                 width={1550}

@@ -101,7 +101,7 @@ const Event = () => {
                     <p>
                       {type.name} Tickets x1 Rs.{type.price} /-
                     </p>
-                    <p>Capacity: 0/{type.capacity}</p>
+                    <p>Capacity: {type.remaining_count}/{type.capacity}</p>
                   </div>
                 );
               })
