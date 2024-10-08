@@ -8,10 +8,10 @@ const ImageUploadBtn = () => {
 
   const handleImageUpload = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const photo = e.target.files?.[0];
-      if (photo) {
+      const profile_picture = e.target.files?.[0];
+      if (profile_picture) {
         const formData = new FormData();
-        formData.append("photo", photo);
+        formData.append("profile_picture", profile_picture);
 
         updateProfilePictureMutation.mutate(formData);
       }

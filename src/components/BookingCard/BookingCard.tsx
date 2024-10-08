@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { AuthContext } from "@@/context/AuthContext";
 import useTickets from "@@/hooks/useTickets";
 import { Event } from "@@/types/events";
 import { TicketType } from "@@/types/ticketType";
 import { Form, Formik, FormikHelpers } from "formik";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { HiMiniXMark } from "react-icons/hi2";
 
@@ -16,11 +17,18 @@ interface BookingCardProps {
 
 const BookingCard = ({
   handleBooking,
+  setIsBookingOpen,
   ticketType,
   event,
 }: BookingCardProps) => {
+  const { isAuthenticated } = useContext(AuthContext);
   const [selectedTicketType, setSelectedTicketType] = useState<any>({});
   const [selectedPayMethod, setSelectedPayMethod] = useState<any>("");
+
+  // slice date
+  const event_date = event?.start_date;
+  const date = event_date?.toString().split("T")[0];
+  // console.log(date)
 
   // const { fetchTicketTypeQuery } = useEvents({ id: selectedTicketType.id });
   const { fetchTicketTypeQuery, bookTicketsMutation } = useTickets({
@@ -54,6 +62,11 @@ const BookingCard = ({
     values: any,
     { setFieldError, resetForm }: FormikHelpers<any>
   ) => {
+    if (!isAuthenticated) {
+      toast.error("Please login first to book tickets!");
+      return;
+    }
+
     const extendedValues = {
       ...values,
       payment_method: selectedPayMethod,
@@ -69,6 +82,7 @@ const BookingCard = ({
           onSuccess: () => {
             resetForm();
             toast.success("Tickets successfully booked!");
+            setIsBookingOpen(false);
           },
           onError: (error: any) => {
             const errors = error.response?.data?.errors || {};
@@ -85,7 +99,7 @@ const BookingCard = ({
 
   const initialValues = {
     ticket_type: data?.id,
-    visiting_date: "2025-01-01",
+    visiting_date: date,
     quantity: 1,
     purchase_type: "Online",
   };
@@ -187,27 +201,45 @@ const BookingCard = ({
                       </div>
                     </div>
 
+                    {/* <div className="mt-2">
+                      <h1 className="text-gray-500 text-sm mt-2">
+                        Select Visitng Date
+                      </h1>
+                      <div>
+                        <input
+                          type="date"
+                          name="visiting_date"
+                          id=""
+                          value={values.visiting_date}
+                          onChange={(e) => setFieldValue("visiting_date", e.target.value)} 
+                          className="h-full border border-neutral-300"
+                        />
+                      </div>
+                    </div> */}
+
                     <div className="mt-2">
                       <h1 className="text-gray-500 text-sm mt-2">
                         Select Payment Method
                       </h1>
                       <div className="mt-1 flex flex-wrap gap-2">
-                        {["eSewa", "Fonepay", "IME Pay", "Cash"].map((payment) => {
-                          return (
-                            <button
-                              key={payment}
-                              type="button"
-                              onClick={() => handlePayMethod(payment)}
-                              className={`px-2 py-1 border rounded-lg text-sm ${
-                                isSelectedPayMethod(payment)
-                                  ? "bg-neutral-800 text-white"
-                                  : "text-neutral-800 bg-white hover:bg-neutral-800 hover:text-white"
-                              }`}
-                            >
-                              {payment}
-                            </button>
-                          );
-                        })}
+                        {["eSewa", "Fonepay", "IME Pay", "Cash"].map(
+                          (payment) => {
+                            return (
+                              <button
+                                key={payment}
+                                type="button"
+                                onClick={() => handlePayMethod(payment)}
+                                className={`px-2 py-1 border rounded-lg text-sm ${
+                                  isSelectedPayMethod(payment)
+                                    ? "bg-neutral-800 text-white"
+                                    : "text-neutral-800 bg-white hover:bg-neutral-800 hover:text-white"
+                                }`}
+                              >
+                                {payment}
+                              </button>
+                            );
+                          }
+                        )}
                       </div>
                     </div>
                   </>
