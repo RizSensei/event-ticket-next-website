@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
+import { IoCalendarOutline } from "react-icons/io5";
 
 const Event = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -21,7 +22,40 @@ const Event = () => {
   const handleBooking = () => {
     setIsBookingOpen((prev) => !prev);
   };
-
+  const dateComponent = (start_date: string, end_date: string) => {
+    return (
+      <div className="absolute bottom-2 w-full bg-neutral-900 bg-opacity-80 rounded-lg p-2">
+        <div className="flex gap-4">
+          <div className="flex items-center gap-2">
+            <IoCalendarOutline className="text-white" />
+            <p className="text-sm text-white">
+              <label>Start: </label>
+              {new Date(start_date).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "short",
+                // year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoCalendarOutline className="text-white" />
+            <p className="text-sm text-white">
+              <label>End: </label>
+              {new Date(end_date).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "short",
+                // year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <>
       <div className="mt-5">
@@ -50,6 +84,8 @@ const Event = () => {
               className="h-full w-full object-cover"
             />
           )}
+          {event !== undefined &&
+            dateComponent(event.start_date, event.end_date)}
         </div>
 
         <div className="mt-3">
@@ -101,7 +137,9 @@ const Event = () => {
                     <p>
                       {type.name} Tickets x1 Rs.{type.price} /-
                     </p>
-                    <p>Capacity: {type.remaining_count}/{type.capacity}</p>
+                    <p>
+                      Capacity: {type.remaining_count}/{type.capacity}
+                    </p>
                   </div>
                 );
               })
