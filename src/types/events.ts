@@ -1,10 +1,10 @@
 export interface Event {
   readonly id?: string;
   readonly name?: string;
-  readonly description?: string;
-  readonly organizer?: string;
-  readonly start_date?: string;
-  readonly end_date?: string;
+  readonly description: string;
+  readonly organizer: string;
+  readonly start_date: string;
+  readonly end_date: string;
   readonly venue_name?: string;
   readonly venue_address?: string;
   readonly venue_city?: string;
