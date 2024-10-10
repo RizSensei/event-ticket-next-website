@@ -199,7 +199,7 @@ const PDFViewer = ({
   }, [invoiceData]);
 
   return (
-    <div className="z-20 fixed inset-0 bg-white h-screen w-full overflow-y-scroll no-scrollbar">
+    <div className="z-[99999] fixed inset-0 bg-white h-screen w-full overflow-y-scroll no-scrollbar">
       <div className="relative bg-white max-w-lg mx-auto my-10 w-full p-4">
         {/* Pass QR codes to the document / isGenerate false only in preview mode*/}
         <MyDocument

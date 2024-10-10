@@ -52,7 +52,7 @@ const SearchBarAutoComplete = () => {
             onSelect={handleOnSelect}
             autoFocus
             formatResult={formatResult}
-            className="z-[9999]"
+            className="z-[999]"
           />
         </div>
       </header>

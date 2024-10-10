@@ -138,7 +138,6 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
                   className="h-full w-full object-cover"
                 />
                 {dateComponent(event.start_date, event.end_date)}
-
                 {/* <div className="absolute bottom-4 right-4 bg-black bg-opacity-60 rounded-lg p-2">
                   <div className="flex gap-4 items-center text-white">
                     <div className="flex items-center gap-2">
