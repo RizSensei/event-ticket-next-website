@@ -15,9 +15,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 // import { IoIosHeartEmpty } from "react-icons/io";
 import { TbFileInvoice } from "react-icons/tb";
 import { useDispatch } from "react-redux";
-import SearchBar from "../../components/Search/SearchBar";
+// import SearchBar from "../../components/Search/SearchBar";
 import "../globals.css";
 import PageLayout from "./page.layout";
+import SearchBarAutoComplete from "@@/components/Search/SearchBarAutoComplete";
 
 export default function RootLayout({
   children,
@@ -58,7 +59,7 @@ export default function RootLayout({
                   </button>
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-2">
-                  <SearchBar />
+                  <SearchBarAutoComplete/>
 
                   {/* <button
                     onClick={handleFilterDrawer}
@@ -75,7 +76,7 @@ export default function RootLayout({
                         </PopoverButton>
                         <PopoverPanel
                           anchor="top end"
-                          className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
+                          className="z-[99999] w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
                         >
                           {isAuthenticated ? (
                             <>

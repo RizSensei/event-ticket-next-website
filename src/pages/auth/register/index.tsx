@@ -5,10 +5,12 @@ import { Customer } from "@@/types/auth";
 import { registerSchema } from "@@/validation/registerSchema";
 import { Form, Formik, FormikHelpers } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 
 const Register = () => {
   const { customerRegisterMutation } = useRegister();
+  const router = useRouter();
 
   const initialValues: Customer = {
     name: "",
@@ -25,6 +27,7 @@ const Register = () => {
         onSuccess: () => {
           resetForm();
           toast.success("Registration successfull");
+          router.push('/auth/login');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {

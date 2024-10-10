@@ -4,6 +4,7 @@ import useTickets from "@@/hooks/useTickets";
 import { Event } from "@@/types/events";
 import { TicketType } from "@@/types/ticketType";
 import { Form, Formik, FormikHelpers } from "formik";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { HiMiniXMark } from "react-icons/hi2";
@@ -21,6 +22,7 @@ const BookingCard = ({
   ticketType,
   event,
 }: BookingCardProps) => {
+  const router = useRouter();
   const { isAuthenticated } = useContext(AuthContext);
   const [selectedTicketType, setSelectedTicketType] = useState<any>({});
   const [selectedPayMethod, setSelectedPayMethod] = useState<any>("");
@@ -83,6 +85,7 @@ const BookingCard = ({
             resetForm();
             toast.success("Tickets successfully booked!");
             setIsBookingOpen(false);
+            router.push('/profile/myTickets');
           },
           onError: (error: any) => {
             const errors = error.response?.data?.errors || {};
@@ -201,7 +204,7 @@ const BookingCard = ({
                       </div>
                     </div>
 
-                    {/* <div className="mt-2">
+                    <div className="mt-2">
                       <h1 className="text-gray-500 text-sm mt-2">
                         Select Visitng Date
                       </h1>
@@ -215,7 +218,7 @@ const BookingCard = ({
                           className="h-full border border-neutral-300"
                         />
                       </div>
-                    </div> */}
+                    </div>
 
                     <div className="mt-2">
                       <h1 className="text-gray-500 text-sm mt-2">
