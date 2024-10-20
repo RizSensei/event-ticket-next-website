@@ -30,9 +30,7 @@ const BookingCard = ({
   // slice date
   const event_date = event?.start_date;
   const date = event_date?.toString().split("T")[0];
-  // console.log(date)
 
-  // const { fetchTicketTypeQuery } = useEvents({ id: selectedTicketType.id });
   const { fetchTicketTypeQuery, bookTicketsMutation } = useTickets({
     id: selectedTicketType.id,
   });
@@ -73,7 +71,6 @@ const BookingCard = ({
       ...values,
       payment_method: selectedPayMethod,
     };
-    console.log(extendedValues);
     try {
       await bookTicketsMutation.mutateAsync(
         {
@@ -88,11 +85,19 @@ const BookingCard = ({
             router.push('/profile/myTickets');
           },
           onError: (error: any) => {
-            const errors = error.response?.data?.errors || {};
-            Object.entries(errors).forEach(([key, value]) =>
-              setFieldError(key, value?.toString())
-            );
+            const errors = error?.response?.data || {};
+            console.log(errors);
+          
+            if (errors.errors && typeof errors.errors === 'object') {
+              Object.entries(errors.errors).forEach(([key, value]) => {
+                toast.error(String(value)); 
+              });
+            } else {
+              toast.error("An unexpected error occurred."); 
+            }
           },
+          
+          
         }
       );
     } catch (err) {

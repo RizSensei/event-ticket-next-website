@@ -191,14 +191,7 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
         </div>
         <div className="mt-3 flex flex-col gap-1 text-light-black">
           <p className="font-sans text-xs text-gray-500 line-clamp-2">
-            {event.description ??
-              `
-              Known for their soulful melodies, thought-provoking lyrics, and
-              eclectic fusion of rock, blues, and Nepali folk influences, Pahenlo
-              Batti Muni promises an unforgettable live performance. Fans can
-              expect to hear their favorite tracks such as Bichitra Tatepate
-              Bhitta, and other hits that resonate with the youth of Nepal.
-            `}
+            {event.description ?? ""}
           </p>
         </div>
       </div>

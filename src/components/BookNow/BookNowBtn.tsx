@@ -1,6 +1,7 @@
 import useEvents from "@@/hooks/useEvents";
 import React from "react";
 import BookingCard from "../BookingCard/BookingCard";
+import moment from "moment";
 
 interface BookNowBtnProps {
   handleBooking: () => void;
@@ -16,13 +17,16 @@ const BookNowBtn = (props: BookNowBtnProps) => {
   const { data: event } = fetchEventDetailQuery;
   const { data: ticketType } = fetchEventTicketTypesQuery;
 
+  const isBookingDatePassed = moment().isAfter(event?.end_date);
+
   return (
     <>
       <button
+        disabled={isBookingDatePassed}
         onClick={props.handleBooking}
         className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
       >
-        Book Now
+        {isBookingDatePassed ? "The booking window is closed" : "Book Now"}
       </button>
 
       {props.isBookingOpen && (
