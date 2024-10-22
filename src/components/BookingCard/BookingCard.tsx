@@ -60,7 +60,10 @@ const BookingCard = ({
 
   const handleSubmit = async (
     values: any,
-    { setFieldError, resetForm }: FormikHelpers<any>
+    {
+      //  setFieldError,
+      resetForm,
+    }: FormikHelpers<any>
   ) => {
     if (!isAuthenticated) {
       toast.error("Please login first to book tickets!");
@@ -82,22 +85,25 @@ const BookingCard = ({
             resetForm();
             toast.success("Tickets successfully booked!");
             setIsBookingOpen(false);
-            router.push('/profile/myTickets');
+            router.push("/profile/myTickets");
           },
           onError: (error: any) => {
             const errors = error?.response?.data || {};
             console.log(errors);
-          
-            if (errors.errors && typeof errors.errors === 'object') {
-              Object.entries(errors.errors).forEach(([key, value]) => {
-                toast.error(String(value)); 
-              });
+
+            if (errors.errors && typeof errors.errors === "object") {
+              Object.entries(errors.errors).forEach(
+                ([
+                  // key
+                  value,
+                ]) => {
+                  toast.error(String(value));
+                }
+              );
             } else {
-              toast.error("An unexpected error occurred."); 
+              toast.error("An unexpected error occurred.");
             }
           },
-          
-          
         }
       );
     } catch (err) {
@@ -219,7 +225,9 @@ const BookingCard = ({
                           name="visiting_date"
                           id=""
                           value={values.visiting_date}
-                          onChange={(e) => setFieldValue("visiting_date", e.target.value)} 
+                          onChange={(e) =>
+                            setFieldValue("visiting_date", e.target.value)
+                          }
                           className="h-full border border-neutral-300"
                         />
                       </div>
