@@ -11,9 +11,8 @@ interface TopDrawerProps {
 
 const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
   return (
-    <div className="z-[999] max-w-lg 2xl:max-w-xl w-full fixed bottom-0 bg-white px-5 md:px-12  border-t border-gray-400 overflow-y-auto">
+    <div className="z-[999] max-w-lg 2xl:max-w-xl w-full fixed top-0 bg-white py-5 px-5 md:px-12  border-t border-gray-400 overflow-y-auto">
       <div className="h-screen">
-        <div className="py-5">
           <div className="w-full flex items-center justify-between">
             <Image src={Logo.src} alt="" width={150} height={75} />
             <button onClick={handleTopDrawer}>
@@ -64,7 +63,6 @@ const TopDrawer = ({ handleTopDrawer }: TopDrawerProps) => {
               <Link href={"/"}>&nbsp;Privacy</Link>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

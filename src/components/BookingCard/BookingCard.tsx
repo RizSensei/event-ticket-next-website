@@ -94,9 +94,10 @@ const BookingCard = ({
             if (errors.errors && typeof errors.errors === "object") {
               Object.entries(errors.errors).forEach(
                 ([
-                  // key
+                  key,
                   value,
                 ]) => {
+                  console.log("error:",key)
                   toast.error(String(value));
                 }
               );

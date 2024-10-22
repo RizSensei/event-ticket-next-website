@@ -46,7 +46,7 @@ export default function RootLayout({
     <PageLayout title="Mero Ticket" description="">
       <div className={`antialiased flex flex-col h-screen w-full bg-white`}>
         <div className="flex flex-grow">
-          <div className="h-full m-2 flex flex-grow justify-center w-full bg-white">
+          <div className="h-full flex flex-grow justify-center w-full bg-white">
             {/* main content area */}
             <div className="relative max-w-lg 2xl:max-w-xl h-full py-5 px-5 md:px-12 flex flex-grow justify-center bg-white">
               <div className="w-full bg-white">
@@ -58,7 +58,7 @@ export default function RootLayout({
                     <GiHamburgerMenu />
                   </button>
                 </div>
-                <div className="mt-3 flex items-center justify-between gap-2">
+                <div className="mt-3 w-full flex items-center justify-between gap-2">
                   <SearchBarAutoComplete />
 
                   {/* <button

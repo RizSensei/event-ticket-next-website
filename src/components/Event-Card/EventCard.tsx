@@ -17,7 +17,7 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
   const dateComponent = (start_date: string, end_date: string) => {
     return (
       <div className="absolute bottom-2 w-full bg-neutral-900 bg-opacity-80 rounded-lg p-2">
-        <div className="flex gap-4">
+        <div className="flex justify-between gap-4">
           <div className="flex items-center gap-2">
             <IoCalendarOutline className="text-white" />
             <p className="text-sm text-white">

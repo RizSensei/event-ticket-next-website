@@ -116,7 +116,7 @@ const Event = () => {
             <h1>Description</h1>
             <hr className="flex-grow" />
           </div>
-          <p className="font-sans text-sm text-gray-500">
+          <p className="font-sans text-sm text-justify text-gray-500">
             {event?.description}
           </p>
         </div>
@@ -129,6 +129,9 @@ const Event = () => {
           <div>
             {ticketType && ticketType?.length > 0 ? (
               ticketType?.map((type: TicketType, i: number) => {
+                const booked_tickets_count =
+                  (type.capacity ?? 0) - (type.remaining_count ?? 0);
+
                 return (
                   <div
                     key={i}
@@ -138,7 +141,7 @@ const Event = () => {
                       {type.name} Tickets x1 Rs.{type.price} /-
                     </p>
                     <p>
-                      Capacity: {type.remaining_count}/{type.capacity}
+                      Capacity: {booked_tickets_count}/{type.capacity}
                     </p>
                   </div>
                 );

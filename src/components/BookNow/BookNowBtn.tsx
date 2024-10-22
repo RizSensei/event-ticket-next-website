@@ -26,7 +26,7 @@ const BookNowBtn = (props: BookNowBtnProps) => {
         onClick={props.handleBooking}
         className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
       >
-        {isBookingDatePassed ? "The booking window is closed" : "Book Now"}
+        {isBookingDatePassed ? "Booking is closed" : "Book Now"}
       </button>
 
       {props.isBookingOpen && (

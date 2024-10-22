@@ -43,9 +43,9 @@ const SearchBarAutoComplete = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App flex-grow">
       <header className="App-header">
-        <div className="w-96">
+        <div className="w-full">
           <ReactSearchAutocomplete
             items={items}
             onSearch={handleOnSearch}
