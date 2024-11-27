@@ -1,3 +1,5 @@
+import { Category } from "./category";
+
 export interface Event {
   readonly id?: string;
   readonly name?: string;
@@ -13,7 +15,7 @@ export interface Event {
   readonly venue_country?: string;
   readonly banner_photo?: string;
   readonly status?: string;
-  // readonly category?: number;
+  readonly category?: Category;
 }
 
 export interface EventCategory {

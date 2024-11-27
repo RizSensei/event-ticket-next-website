@@ -1,4 +1,5 @@
 // import AddToFavouritesBtn from "@@/components/AddToFavourites/AddToFavouritesBtn";
+import AttendSeminarBtn from "@@/components/AttendSeminar/AttendSeminarBtn";
 import BookNowBtn from "@@/components/BookNow/BookNowBtn";
 import useEvents from "@@/hooks/useEvents";
 import { TicketType } from "@@/types/ticketType";
@@ -18,6 +19,7 @@ const Event = () => {
   });
   const { data: event } = fetchEventDetailQuery;
   const { data: ticketType } = fetchEventTicketTypesQuery;
+  // console.log(event);
 
   const handleBooking = () => {
     setIsBookingOpen((prev) => !prev);
@@ -74,14 +76,22 @@ const Event = () => {
             </div>
           </div>
         </div>
-        <div className="relative h-[500px] w-full rounded-md overflow-hidden">
-          {event?.banner_photo && (
+        <div className="relative h-96 w-full rounded-md overflow-hidden">
+          {event?.banner_photo ? (
             <Image
               src={event?.banner_photo}
               alt=""
-              height={1920}
-              width={1920}
+              height={1550}
+              width={1550}
               className="h-full w-full object-cover"
+            />
+          ) : (
+            <Image
+              src={"/images/logo/logo.png"}
+              alt=""
+              height={1550}
+              width={1550}
+              className="h-full w-50 object-contain grayscale opacity-10"
             />
           )}
           {event !== undefined &&
@@ -94,12 +104,21 @@ const Event = () => {
             {/* <AddToFavouritesBtn /> */}
 
             {/* book events btn  */}
-            <BookNowBtn
-              id={id}
-              handleBooking={handleBooking}
-              isBookingOpen={isBookingOpen}
-              setIsBookingOpen={setIsBookingOpen}
-            />
+            {event?.category?.is_seminar ? (
+              <AttendSeminarBtn
+                id={event?.id}
+                //  handleAttendSeminarModal={handleAttendSeminarModal}
+                //  isAttendSeminarModalOpen={isAttendSeminarModalOpen}
+                //  setIsAttendSeminarModalOpen={setIsAttendSeminarModalOpen}
+              />
+            ) : (
+              <BookNowBtn
+                id={id}
+                handleBooking={handleBooking}
+                isBookingOpen={isBookingOpen}
+                setIsBookingOpen={setIsBookingOpen}
+              />
+            )}
           </div>
         </div>
 
@@ -121,38 +140,40 @@ const Event = () => {
           </p>
         </div>
 
-        <div className="mt-3 flex flex-col gap-1 text-light-black">
-          <div className="flex items-center gap-1">
-            <h1>Tickets</h1>
-            <hr className="flex-grow" />
-          </div>
-          <div>
-            {ticketType && ticketType?.length > 0 ? (
-              ticketType?.map((type: TicketType, i: number) => {
-                const booked_tickets_count =
-                  (type.capacity ?? 0) - (type.remaining_count ?? 0);
+        {!event?.category?.is_seminar && (
+          <div className="mt-3 flex flex-col gap-1 text-light-black">
+            <div className="flex items-center gap-1">
+              <h1>Tickets</h1>
+              <hr className="flex-grow" />
+            </div>
+            <div>
+              {ticketType && ticketType?.length > 0 ? (
+                ticketType?.map((type: TicketType, i: number) => {
+                  const booked_tickets_count =
+                    (type.capacity ?? 0) - (type.remaining_count ?? 0);
 
-                return (
-                  <div
-                    key={i}
-                    className="flex justify-between font-sans text-sm text-gray-500"
-                  >
-                    <p>
-                      {type.name} Tickets x1 Rs.{type.price} /-
-                    </p>
-                    <p>
-                      Capacity: {booked_tickets_count}/{type.capacity}
-                    </p>
-                  </div>
-                );
-              })
-            ) : (
-              <p className="font-sans text-sm text-gray-500">
-                Tickets Information will be made available soon
-              </p>
-            )}
+                  return (
+                    <div
+                      key={i}
+                      className="flex justify-between font-sans text-sm text-gray-500"
+                    >
+                      <p>
+                        {type.name} Tickets x1 Rs.{type.price} /-
+                      </p>
+                      <p>
+                        Capacity: {booked_tickets_count}/{type.capacity}
+                      </p>
+                    </div>
+                  );
+                })
+              ) : (
+                <p className="font-sans text-sm text-gray-500">
+                  Tickets Information will be made available soon
+                </p>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* <div className="mt-3">
           <div className="h-52 w-full">

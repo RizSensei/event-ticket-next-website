@@ -4,6 +4,7 @@ import {
   fetchEventCategories,
   fetchEventDetail,
   fetchEventTicketTypes,
+  respondToEventInvitation,
   // fetchTicketType,
 } from "@@/apis/event";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -11,6 +12,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 export interface EventParameter {
   id?: number | string | string[] | undefined;
   term?: string;
+  response?: string;
 }
 const useEvents = (props: EventParameter) =>
   // page:number,
@@ -19,6 +21,11 @@ const useEvents = (props: EventParameter) =>
   {
     const id = props.id;
     const term = props.term;
+    // const response = props.response;
+
+    const respondToEventInviteMutation = useMutation({
+      mutationFn: respondToEventInvitation
+    });
 
     const fetchEventQuery = useQuery({
       queryKey: [
@@ -75,6 +82,7 @@ const useEvents = (props: EventParameter) =>
       fetchEventTicketTypesQuery,
       // fetchTicketTypeQuery,
       bookTicketsMutation,
+      respondToEventInviteMutation,
     };
   };
 

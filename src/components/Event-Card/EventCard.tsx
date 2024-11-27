@@ -6,14 +6,20 @@ import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 // import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
-import BookNowBtn from "../BookNow/BookNowBtn";
 import { IoCalendarOutline } from "react-icons/io5";
+import AttendSeminarBtn from "../AttendSeminar/AttendSeminarBtn";
+import BookNowBtn from "../BookNow/BookNowBtn";
 
 const EventCard = ({ event }: { event: Event; index: number }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  // const [isAttendSeminarModalOpen, setIsAttendSeminarModalOpen] = useState(false);
+
   const handleBooking = () => {
     setIsBookingOpen((prev) => !prev);
   };
+  // const handleAttendSeminarModal = () => {
+  //   setIsAttendSeminarModalOpen((prev) => !prev);
+  // };
   const dateComponent = (start_date: string, end_date: string) => {
     return (
       <div className="absolute bottom-2 w-full bg-neutral-900 bg-opacity-80 rounded-lg p-2">
@@ -137,7 +143,6 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
                   width={1550}
                   className="h-full w-full object-cover"
                 />
-                {dateComponent(event.start_date, event.end_date)}
                 {/* <div className="absolute bottom-4 right-4 bg-black bg-opacity-60 rounded-lg p-2">
                   <div className="flex gap-4 items-center text-white">
                     <div className="flex items-center gap-2">
@@ -175,18 +180,28 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
                 className="h-full w-50 object-contain grayscale opacity-10"
               />
             )}
+            {dateComponent(event.start_date, event.end_date)}
           </Link>
         </div>
         <div className="mt-3">
           <div className="flex justify-end gap-1">
             {/* add to favourites button  */}
             {/* <AddToFavouritesBtn /> */}
-            <BookNowBtn
-              id={event?.id}
-              handleBooking={handleBooking}
-              isBookingOpen={isBookingOpen}
-              setIsBookingOpen={setIsBookingOpen}
-            />
+            {event?.category?.is_seminar ? (
+              <AttendSeminarBtn
+                id={event?.id}
+                //  handleAttendSeminarModal={handleAttendSeminarModal}
+                //  isAttendSeminarModalOpen={isAttendSeminarModalOpen}
+                //  setIsAttendSeminarModalOpen={setIsAttendSeminarModalOpen}
+              />
+            ) : (
+              <BookNowBtn
+                id={event?.id}
+                handleBooking={handleBooking}
+                isBookingOpen={isBookingOpen}
+                setIsBookingOpen={setIsBookingOpen}
+              />
+            )}
           </div>
         </div>
         <div className="mt-3 flex flex-col gap-1 text-light-black">
