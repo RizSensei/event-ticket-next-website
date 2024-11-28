@@ -23,7 +23,7 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
   // };
   const dateComponent = (start_date: string, end_date: string) => {
     return (
-      <div className="absolute bottom-2 w-full bg-neutral-900 bg-opacity-80 rounded-lg p-2">
+      <div className="absolute bottom-2 w-full bg-dark-black bg-opacity-80 rounded-lg p-2">
         <div className="flex justify-between gap-4">
           <div className="flex items-center gap-2">
             <IoCalendarOutline className="text-white" />
@@ -57,7 +57,7 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
       //   <div className="flex items-center gap-2 bg-blue-100 p-2 rounded-lg shadow-sm">
       //     <IoCalendarOutline className="text-blue-500" />
       //     <div>
-      //       <p className="text-xs text-gray-500">
+      //       <p className="text-xs text-paragraph">
       //         Start Date:
       //         {start_date !== undefined &&
       //           new Date(start_date).toLocaleDateString("en-US", {
@@ -78,9 +78,9 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
       //   </div>
 
       //   <div className="flex items-center gap-2  p-2 rounded-lg shadow-sm">
-      //     <IoCalendarOutline className="text-red-500" />
+      //     <IoCalendarOutline className="text-error" />
       //     <div>
-      //       <p className="text-xs text-gray-500">
+      //       <p className="text-xs text-paragraph">
       //         End Date:
       //         {end_date !== undefined &&
       //           new Date(end_date).toLocaleDateString("en-US", {
@@ -114,12 +114,12 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
         <div className="mb-2">
           <div className="flex justify-between gap-1">
             <div className="flex flex-col gap-1">
-              <h1 className="z-10 font-sans text-gray-800 text-base font-semibold leading-5 line-clamp-1">
+              <h1 className="z-10 font-sans text-dark-black text-base font-semibold leading-5 line-clamp-1">
                 {event.name}
               </h1>
-              <div className="flex gap-1 items-center text-blue font-medium font-sans text-sm">
+              <div className="flex gap-1 items-center text-dark-black font-medium font-sans text-sm">
                 <FaLocationDot />
-                <span className="text-gray-500">
+                <span className="text-paragraph">
                   {event.venue_name}, {event.venue_address}
                 </span>
               </div>
@@ -130,9 +130,9 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
               </PopoverButton>
               <PopoverPanel
                 anchor="bottom"
-                className="w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
+                className="w-max text-sm font-sans flex flex-col divide-y bg-dark-black text-white rounded-md overflow-hidden"
               >
-                <button className="py-1.5 px-5 hover:bg-neutral-700">
+                <button className="py-1.5 px-5 hover:bg-grayish-black">
                   See Details
                 </button>
               </PopoverPanel>
@@ -209,7 +209,7 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
           </div>
         </div>
         <div className="mt-3 flex flex-col gap-1 text-light-black">
-          <p className="font-sans text-xs text-gray-500 line-clamp-2">
+          <p className="font-sans text-xs text-paragraph line-clamp-2">
             {event.description ?? ""}
           </p>
         </div>

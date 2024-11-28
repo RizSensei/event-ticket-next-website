@@ -24,7 +24,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={item.path}
-                    className={`link relative p-4 text-2xl flex items-center gap-5 transform ease-in-out duration-150 text-gray-500 rounded-xl  border border-[#F9FAFB]  ${
+                    className={`link relative p-4 text-2xl flex items-center gap-5 transform ease-in-out duration-150 text-paragraph rounded-xl  border border-[#F9FAFB]  ${
                       isActive ? "text-white  bg-blue" : "hover:border-gray-200 hover:text-gray-800 hover:bg-[#EEF1F6]"
                     }`}
                   >
@@ -39,7 +39,7 @@ const Navbar = () => {
             })}
           </div>
           <div className="flex flex-col items-center gap-2">
-            <div className="rounded-md text-xl flex flex-col gap-3 border border-gray-200 text-gray-500 p-2">
+            <div className="rounded-md text-xl flex flex-col gap-3 border border-gray-200 text-paragraph p-2">
               <FaFacebookF />
               <FaInstagramSquare />
             </div>

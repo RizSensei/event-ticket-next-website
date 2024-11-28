@@ -9,14 +9,14 @@ const Favourites = () => {
     <ProfileLayout profile={{}}>
       <div className="mt-10">
         <div className="flex gap-5 items-center">
-          <h1 className="font-semibold text-lg text-gray-800">
+          <h1 className="font-semibold text-lg text-dark-black">
             Your Favourites
           </h1>
           <hr className="flex-grow" />
         </div>
 
         <div className="mt-5">
-          <h1 className="text-center text-neutral-700">No Favourites</h1>
+          <h1 className="text-center text-grayish-black">No Favourites</h1>
           {/* <div>
             <div className="flex gap-5 items-center bg-gray-100 p-2 rounded-md">
               <Link href={'/events/1'} className="h-16 w-16 rounded-md overflow-hidden shrink-0">
@@ -38,7 +38,7 @@ const Favourites = () => {
                   </h1>
                   <div className="flex gap-1 items-center text-blue font-medium font-sans text-sm">
                     <FaLocationDot />
-                    <span className="text-gray-500">
+                    <span className="text-paragraph">
                       Iclick multi Venue, Lalitpur
                     </span>
                   </div>

@@ -99,7 +99,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full justify-center rounded-md bg-neutral-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800"
+                className="flex w-full justify-center rounded-md bg-dark-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark-black"
               >
                 Sign In
               </button>
@@ -111,11 +111,11 @@ const Login = () => {
         By continuing, you have read and agree to our Terms and Conditions and
         Privacy Statement.
       </p>
-      <p className="mt-5 text-center text-sm text-gray-500">
+      <p className="mt-5 text-center text-sm text-paragraph">
         Need an account ?&nbsp;
         <Link
           href="/auth/register"
-          className="font-semibold leading-6 text-neutral-800"
+          className="font-semibold leading-6 text-dark-black"
         >
           Register
         </Link>

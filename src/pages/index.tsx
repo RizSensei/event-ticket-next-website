@@ -18,7 +18,7 @@ import { useState } from "react";
 //   return (
 //     <button
 //       onClick={onClick}
-//       className="text-xs px-3 py-1 flex gap-1 items-center font-semibold text-neutral-300 bg-neutral-900 rounded-full"
+//       className="text-xs px-3 py-1 flex gap-1 items-center font-semibold text-paragraph bg-dark-black rounded-full"
 //     >
 //       <h1>{label}</h1>
 //       <span>{icon}</span>
@@ -54,7 +54,7 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <h1 className="text-center text-neutral-700">
+            <h1 className="text-center text-grayish-black">
               Currently No Events Organized
             </h1>
           )}

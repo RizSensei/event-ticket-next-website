@@ -23,7 +23,7 @@ const ImageUploadBtn = () => {
     <div className="z-20 absolute -bottom-2 -right-2">
       <button
         onClick={() => document.getElementById("image-file-input")?.click()}
-        className="p-2 bg-white rounded-full text-sm border-2 border-neutral-700"
+        className="p-2 bg-white rounded-full text-sm border-2 border-grayish-black"
       >
         <FaCamera />
       </button>

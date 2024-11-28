@@ -39,19 +39,19 @@ const Profile = () => {
       <div className="mt-5 flex gap-2">
         {/* <Link
           href={"/profile/favourites"}
-          className="px-2 py-2 bg-neutral-800 text-white flex justify-center flex-col items-center flex-1 rounded-md"
+          className="px-2 py-2 bg-dark-black text-white flex justify-center flex-col items-center flex-1 rounded-md"
         >
           Favourites
         </Link> */}
         <Link
           href={"/profile/myTickets"}
-          className="px-2 py-2 bg-neutral-700 text-white flex justify-center flex-col items-center flex-1 rounded-md"
+          className="px-2 py-2 bg-grayish-black text-white flex justify-center flex-col items-center flex-1 rounded-md"
         >
           My Tickets
         </Link>
         <button
           onClick={handleLogout}
-          className="px-2 py-2 bg-neutral-950 text-white flex-1 rounded-md"
+          className="px-2 py-2 bg-dark-black text-white flex-1 rounded-md"
         >
           Log Out
         </button>

@@ -164,14 +164,14 @@ const PDFViewer = ({
         <div className="flex justify-center gap-2 mt-4">
           <button
             onClick={onClose}
-            className="text-sm bg-neutral-700 text-white px-2 py-2 rounded-md"
+            className="text-sm bg-grayish-black text-white px-2 py-2 rounded-md"
           >
             Close Preview
           </button>
           <PDFDownloadLink
             document={<MyDocument invoiceData={invoiceData} />}
             fileName="my-document.pdf"
-            className="text-sm bg-neutral-900 text-white px-2 py-2 rounded-md"
+            className="text-sm bg-dark-black text-white px-2 py-2 rounded-md"
           >
             Download PDF
           </PDFDownloadLink>

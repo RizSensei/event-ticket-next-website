@@ -9,8 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'blue':'#2565C7',
-        'light-black':'#222222'
+        'light-black':'#222222',
+        'dark-black':'#0F0F0F',
+        'grayish-black':'#404040',
+        'paragraph':'#6B7280',
+        'error':'#ef4444'
       },
     },
   },

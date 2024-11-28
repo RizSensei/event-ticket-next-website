@@ -25,22 +25,22 @@ const BookedTickets = () => {
     <ProfileLayout profile={profile}>
       <div className="mt-10">
         <div className="flex gap-5 items-center">
-          <h1 className="font-semibold text-lg text-gray-800">Your Tickets</h1>
+          <h1 className="font-semibold text-lg text-dark-black">Your Tickets</h1>
           <hr className="flex-grow" />
         </div>
 
-        <div className="mt-5">
+        <div className="mt-3">
           <div className="flex flex-col gap-1">
             {invoices?.data?.length > 0 ? (
               invoices.data.map((invoice: Invoices) => {
                 return (
                   <div
                     key={invoice?.id}
-                    className="rounded-md overflow-hidden py-3 px-5 bg-neutral-200"
+                    className="rounded-md overflow-hidden py-3 px-5 bg-paragraph"
                   >
-                    <div className="flex flex-col divide-y-2 divide-neutral-300 gap-1">
+                    <div className="flex flex-col divide-y-2 divide-paragraph gap-1">
                       <div className="flex gap-2 justify-between">
-                        <h1 className="w-full font-semibold text-neutral-900">
+                        <h1 className="w-full font-semibold text-dark-black">
                           {invoice?.event?.name}
                         </h1>
                         <MyTickets id={invoice?.id} />
@@ -58,7 +58,7 @@ const BookedTickets = () => {
                 );
               })
             ) : (
-              <h1 className="text-center text-neutral-700">
+              <h1 className="text-center text-grayish-black">
                 No Tickets Bought !
               </h1>
             )}

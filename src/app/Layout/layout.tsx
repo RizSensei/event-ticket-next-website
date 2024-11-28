@@ -12,6 +12,7 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegUser, FaUser } from "react-icons/fa6";
 // import { FiBell } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { LuMessagesSquare } from "react-icons/lu";
 // import { IoIosHeartEmpty } from "react-icons/io";
 import { TbFileInvoice } from "react-icons/tb";
 import { useDispatch } from "react-redux";
@@ -61,29 +62,22 @@ export default function RootLayout({
                 <div className="mt-3 w-full flex items-center justify-between gap-2">
                   <SearchBarAutoComplete />
 
-                  {/* <button
-                    onClick={handleFilterDrawer}
-                    className="py-2 pl-2 text-base flex items-center text-gray-800"
-                  >
-                    <FaFilter />
-                  </button> */}
-
                   <Popover className="relative">
                     {({ close }) => (
                       <>
-                        <PopoverButton className="py-2 pl-2 text-base flex items-center text-gray-800 focus:outline-none">
+                        <PopoverButton className="py-2 pl-2 text-base flex items-center text-dark-black focus:outline-none">
                           <FaUser />
                         </PopoverButton>
                         <PopoverPanel
                           anchor="top end"
-                          className="z-[99999] w-max text-sm font-sans flex flex-col divide-y bg-neutral-800 text-white rounded-md overflow-hidden"
+                          className="z-[99999] w-max text-sm font-sans flex flex-col divide-y bg-dark-black text-white rounded-md overflow-hidden"
                         >
                           {isAuthenticated ? (
                             <>
                               <Link
                                 onClick={() => close()}
                                 href={"/profile"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <FaRegUser />
                                 <span>Profile</span>
@@ -92,7 +86,7 @@ export default function RootLayout({
                               {/* <Link
                                 onClick={() => close()}
                                 href={"/profile/favourites"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <IoIosHeartEmpty />
                                 <span>Favourites</span>
@@ -100,27 +94,35 @@ export default function RootLayout({
                               <Link
                                 onClick={() => close()}
                                 href={"/profile/myTickets"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <TbFileInvoice />
                                 <span>Tickets</span>
                               </Link>
+                              <Link
+                                onClick={() => close()}
+                                href={"/profile/invitations"}
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
+                              >
+                                <LuMessagesSquare />
+                                <span>Invitations</span>
+                              </Link>
                               {/* <Link
                                 onClick={() => close()}
                                 href={"/profile/notifications"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <FiBell />
                                 <span className="flex items-center gap-1">
                                   Notifications
-                                  <span className="text-sm font-sans font-semibold h-4 w-4 rounded-full bg-white text-neutral-700 flex flex-col items-center justify-center">
+                                  <span className="text-sm font-sans font-semibold h-4 w-4 rounded-full bg-white text-grayish-black flex flex-col items-center justify-center">
                                     2
                                   </span>
                                 </span>
                               </Link> */}
                               <button
                                 onClick={handleLogout}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <BiLogOut />
                                 <span>Log Out</span>
@@ -130,14 +132,14 @@ export default function RootLayout({
                             <>
                               <Link
                                 href={"/auth/login"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <BiLogIn />
                                 <span>Login</span>
                               </Link>
                               <Link
                                 href={"/auth/register"}
-                                className="py-2 px-8 hover:bg-neutral-700 flex items-center gap-2"
+                                className="py-2 px-8 hover:bg-grayish-black flex items-center gap-2"
                               >
                                 <BiLogIn />
                                 <span>Register</span>

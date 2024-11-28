@@ -17,7 +17,7 @@ const AuthLayout = ({ children, title }: AuthLayoutProps) => {
         </div> */}
         <div className="mt-5 flex items-center justify-between gap-5">
           <hr className="flex-grow" />
-          <h1 className="font-sans text-neutral-800 font-semibold text-xl">
+          <h1 className="font-sans text-dark-black font-semibold text-xl">
             {title}
           </h1>
           <hr className="flex-grow" />
@@ -25,7 +25,7 @@ const AuthLayout = ({ children, title }: AuthLayoutProps) => {
         {children}
         <Link
           href="/"
-          className="text-gray-400 hover:text-gray-600 duration-300 ease-in-out transform text-center underline text-xs"
+          className="text-paragraph hover:text-dark-black duration-300 ease-in-out transform text-center underline text-xs"
         >
           Back to home
         </Link>

@@ -127,10 +127,10 @@ const BookingCard = ({
 
       {/* Ticket Type Selection */}
       <div className="">
-        <h1 className="text-neutral-800 text-lg font-semibold">
+        <h1 className="text-dark-black text-lg font-semibold">
           {event?.name}
         </h1>
-        <h1 className="text-gray-500 text-sm mt-2">Select Ticket Type</h1>
+        <h1 className="text-paragraph text-sm mt-2">Select Ticket Type</h1>
         <div className="mt-1 flex flex-wrap gap-2">
           {ticketType?.length ? (
             ticketType?.map((type: any, i: number) => (
@@ -139,8 +139,8 @@ const BookingCard = ({
                 onClick={() => handleTicketType(type)}
                 className={`text-sm flex flex-col border rounded-lg px-5 py-2 ${
                   isSelectedTicketType(type.name)
-                    ? "bg-neutral-800 text-white"
-                    : "text-neutral-800 bg-white hover:bg-neutral-800 hover:text-white"
+                    ? "bg-dark-black text-white"
+                    : "text-dark-black bg-white hover:bg-dark-black hover:text-white"
                 }`}
               >
                 <span className="font-sans">{type.name}</span>
@@ -148,7 +148,7 @@ const BookingCard = ({
               </button>
             ))
           ) : (
-            <p className="text-sm text-neutral-700">
+            <p className="text-sm text-grayish-black">
               Tickets Information will be made available soon
             </p>
           )}
@@ -166,7 +166,7 @@ const BookingCard = ({
             {selectedTicketType.name && data && (
               <>
                 <div className="mt-3">
-                  <div className="bg-neutral-800 text-white p-2 rounded-md">
+                  <div className="bg-dark-black text-white p-2 rounded-md">
                     <div className="flex items-center justify-between w-full">
                       <h1 className="font-semibold text-sm">
                         {data.name} Ticket
@@ -181,7 +181,7 @@ const BookingCard = ({
                             )
                           }
                           disabled={values.quantity <= 1}
-                          className="h-8 w-8 bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center"
+                          className="h-8 w-8 bg-dark-black hover:bg-dark-black text-white flex items-center justify-center"
                         >
                           -
                         </button>
@@ -189,14 +189,14 @@ const BookingCard = ({
                           type="text"
                           value={values.quantity}
                           readOnly
-                          className="w-8 text-sm  text-center text-neutral-700 bg-white"
+                          className="w-8 text-sm  text-center text-grayish-black bg-white"
                         />
                         <button
                           type="button"
                           onClick={() =>
                             setFieldValue("quantity", values.quantity + 1)
                           }
-                          className="h-8 w-8 bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center"
+                          className="h-8 w-8 bg-dark-black hover:bg-dark-black text-white flex items-center justify-center"
                         >
                           +
                         </button>
@@ -211,7 +211,7 @@ const BookingCard = ({
                 </div>
 
                 <div className="mt-2">
-                  <h1 className="text-gray-500 text-sm mt-2">
+                  <h1 className="text-paragraph text-sm mt-2">
                     Select Visitng Date
                   </h1>
                   <div>
@@ -223,13 +223,13 @@ const BookingCard = ({
                       onChange={(e) =>
                         setFieldValue("visiting_date", e.target.value)
                       }
-                      className="h-full border border-neutral-300"
+                      className="h-full border border-paragraph"
                     />
                   </div>
                 </div>
 
                 <div className="mt-2">
-                  <h1 className="text-gray-500 text-sm mt-2">
+                  <h1 className="text-paragraph text-sm mt-2">
                     Select Payment Method
                   </h1>
                   <div className="mt-1 flex flex-wrap gap-2">
@@ -241,8 +241,8 @@ const BookingCard = ({
                           onClick={() => handlePayMethod(payment)}
                           className={`px-2 py-1 border rounded-lg text-sm ${
                             isSelectedPayMethod(payment)
-                              ? "bg-neutral-800 text-white"
-                              : "text-neutral-800 bg-white hover:bg-neutral-800 hover:text-white"
+                              ? "bg-dark-black text-white"
+                              : "text-dark-black bg-white hover:bg-dark-black hover:text-white"
                           }`}
                         >
                           {payment}
@@ -260,21 +260,21 @@ const BookingCard = ({
                 <button
                   type="button"
                   onClick={handleBooking}
-                  className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
+                  className="px-3 py-1.5 border border-dark-black text-dark-black rounded-md"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={() => handleClearData(resetForm)}
-                  className="px-3 py-1.5 border border-neutral-900 text-neutral-900 rounded-md"
+                  className="px-3 py-1.5 border border-dark-black text-dark-black rounded-md"
                 >
                   Clear
                 </button>
               </div>
               <button
                 type="submit"
-                className="px-3 py-1.5 bg-neutral-900 text-white rounded-md"
+                className="px-3 py-1.5 bg-dark-black text-white rounded-md"
               >
                 Book
               </button>

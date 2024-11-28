@@ -26,7 +26,7 @@ const Event = () => {
   };
   const dateComponent = (start_date: string, end_date: string) => {
     return (
-      <div className="absolute bottom-2 w-full bg-neutral-900 bg-opacity-80 rounded-lg p-2">
+      <div className="absolute bottom-2 w-full bg-dark-black bg-opacity-80 rounded-lg p-2">
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <IoCalendarOutline className="text-white" />
@@ -64,12 +64,12 @@ const Event = () => {
         <div className="mb-2">
           <div className="flex justify-between gap-1">
             <div className="flex flex-col gap-1">
-              <h1 className="z-10 font-sans text-gray-800 text-xl font-semibold leading-5 line-clamp-1">
+              <h1 className="z-10 font-sans text-gray-800 text-base font-semibold leading-5 line-clamp-1">
                 {event?.name}
               </h1>
-              <div className="flex gap-1 items-center text-blue font-medium font-sans text-sm">
+              <div className="flex gap-1 items-center text-dark-black font-medium font-sans text-sm">
                 <FaLocationDot />
-                <span className="text-gray-500">
+                <span className="text-paragraph">
                   {event?.venue_name}, {event?.venue_address}
                 </span>
               </div>
@@ -127,7 +127,7 @@ const Event = () => {
             <h1>Organizer</h1>
             <hr className="flex-grow" />
           </div>
-          <p className="font-sans text-sm text-gray-500">{event?.organizer}</p>
+          <p className="font-sans text-sm text-paragraph">{event?.organizer}</p>
         </div>
 
         <div className="mt-3 flex flex-col gap-1 text-light-black">
@@ -135,7 +135,7 @@ const Event = () => {
             <h1>Description</h1>
             <hr className="flex-grow" />
           </div>
-          <p className="font-sans text-sm text-justify text-gray-500">
+          <p className="font-sans text-sm text-justify text-paragraph">
             {event?.description}
           </p>
         </div>
@@ -155,7 +155,7 @@ const Event = () => {
                   return (
                     <div
                       key={i}
-                      className="flex justify-between font-sans text-sm text-gray-500"
+                      className="flex justify-between font-sans text-sm text-paragraph"
                     >
                       <p>
                         {type.name} Tickets x1 Rs.{type.price} /-
@@ -167,7 +167,7 @@ const Event = () => {
                   );
                 })
               ) : (
-                <p className="font-sans text-sm text-gray-500">
+                <p className="font-sans text-sm text-paragraph">
                   Tickets Information will be made available soon
                 </p>
               )}

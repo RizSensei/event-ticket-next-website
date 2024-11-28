@@ -49,7 +49,7 @@ const AttendSeminarBtn = ({ id }: AttendSeminarBtnProps) => {
       return (
         <button
           disabled
-          className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
+          className="px-3 py-2 text-sm bg-dark-black text-white rounded-md"
         >
           Booking closed
         </button>
@@ -60,7 +60,7 @@ const AttendSeminarBtn = ({ id }: AttendSeminarBtnProps) => {
       return (
         <button
           onClick={() => handleRespondToEventInvite("Accepted")}
-          className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
+          className="px-3 py-2 text-sm bg-dark-black text-white rounded-md"
         >
           Attend
         </button>
@@ -72,7 +72,7 @@ const AttendSeminarBtn = ({ id }: AttendSeminarBtnProps) => {
         return (
           <button
             onClick={() => handleRespondToEventInvite("Accepted")}
-            className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
+            className="px-3 py-2 text-sm bg-dark-black text-white rounded-md"
           >
             Attend
           </button>
@@ -83,14 +83,14 @@ const AttendSeminarBtn = ({ id }: AttendSeminarBtnProps) => {
           <div className="flex gap-1">
             <button
               disabled
-              className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md flex items-center"
+              className="px-3 py-2 text-sm bg-dark-black text-white rounded-md flex items-center"
             >
               <TiTick className="mr-1" />
               Attending
             </button>
             <button
               onClick={() => handleRespondToEventInvite("Rejected")}
-              className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
+              className="px-3 py-2 text-sm bg-dark-black text-white rounded-md"
             >
               <FaXmark />
             </button>
@@ -101,7 +101,7 @@ const AttendSeminarBtn = ({ id }: AttendSeminarBtnProps) => {
         return (
           <button
             onClick={() => handleRespondToEventInvite("Accepted")}
-            className="px-3 py-2 text-sm bg-neutral-900 text-white rounded-md"
+            className="px-3 py-2 text-sm bg-dark-black text-white rounded-md"
           >
             Attend
           </button>

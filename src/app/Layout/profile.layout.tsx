@@ -34,13 +34,13 @@ const ProfileLayout = ({ children, profile }: ProfileLayoutInterface) => {
   return (
     <div className="relative mt-5">
       <div className="absolute top-0">
-        <button onClick={() => router.back()} className="text-neutral-800">
+        <button onClick={() => router.back()} className="text-dark-black">
           <FaArrowLeft />
         </button>
       </div>
       <div className="py-2">
         <div className="flex flex-col items-center">
-          <div className="relative h-20 w-20 flex flex-col items-center justify-center rounded-full border-4 border-neutral-800">
+          <div className="relative h-20 w-20 flex flex-col items-center justify-center rounded-full border-4 border-dark-black">
             {profile?.photo ? (
               <Image
                 src={profile?.photo}

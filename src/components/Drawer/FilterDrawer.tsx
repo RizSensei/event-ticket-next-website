@@ -23,7 +23,7 @@ const FilterDrawer = ({
 
   return (
     <div
-      className="z-50 max-w-md w-full fixed bottom-0 bg-white pt-3 rounded-t-3xl border-t border-gray-400"
+      className="z-50 max-w-md w-full fixed bottom-0 bg-white pt-3 rounded-t-3xl border-t border-paragraph"
     >
       <div className="overflow-y-auto h-full px-8">
         <div className="relative max-h-[450px] 2xl:max-h-[575px] w-full flex flex-col">
@@ -46,7 +46,7 @@ const FilterDrawer = ({
       <div className="h-16 w-full"></div>
       {/* Fixed button at the bottom of the screen */}
       <div className="fixed bottom-0 left-0 right-0">
-        <button className="w-full bg-neutral-800 text-white text-center py-2 rounded-t-md">
+        <button className="w-full bg-dark-black text-white text-center py-2 rounded-t-md">
           Apply Filter
         </button>
       </div>
