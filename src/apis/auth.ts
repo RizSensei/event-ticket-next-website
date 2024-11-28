@@ -16,7 +16,13 @@ export const fetchCustomerProfile = async () =>
   (await axiosClient.get(urls.API_CUSTOMER_PROFILE)).data;
 
 // update game icon team_icon
-export const updateProfilePicture = async(image:any) => {
-  const response = await axiosClient.patch(`${urls.API_CUSTOMER}/update-profile-picture`,image);
+export const updateProfilePicture = async (image: any) => {
+  const response = await axiosClient.patch(
+    `${urls.API_CUSTOMER}/update-profile-picture`,
+    image
+  );
   return response?.data?.data;
-}
+};
+
+export const fetchCustomerEventsInvitations = async () =>
+  (await axiosClient.get(`${urls.API_CUSTOMER_EVENT_INVITATIONS}`)).data;

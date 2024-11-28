@@ -12,6 +12,7 @@ export default {
   API_CUSTOMER_PROFILE: `${BASEURL}/auth/customer-profile`,
   API_CUSTOMER_INVOICES: `${BASEURL}/auth/my-invoices`,
   API_INVOICE: `${BASEURL}/invoices`,
+  API_CUSTOMER_EVENT_INVITATIONS: `${BASEURL}/auth/my-invitations`,
   // events 
   API_EVENT: `${BASEURL}/events`,
   API_EVENT_CATEGORY: `${BASEURL}/event-categories`,

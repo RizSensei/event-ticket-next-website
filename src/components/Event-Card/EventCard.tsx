@@ -190,9 +190,6 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
             {event?.category?.is_seminar ? (
               <AttendSeminarBtn
                 id={event?.id}
-                //  handleAttendSeminarModal={handleAttendSeminarModal}
-                //  isAttendSeminarModalOpen={isAttendSeminarModalOpen}
-                //  setIsAttendSeminarModalOpen={setIsAttendSeminarModalOpen}
               />
             ) : (
               <BookNowBtn
