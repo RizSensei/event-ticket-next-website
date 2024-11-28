@@ -2,13 +2,14 @@ import { Event } from "@@/types/events";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 // import AddToFavouritesBtn from "../AddToFavourites/AddToFavouritesBtn";
 import { IoCalendarOutline } from "react-icons/io5";
 import AttendSeminarBtn from "../AttendSeminar/AttendSeminarBtn";
 import BookNowBtn from "../BookNow/BookNowBtn";
+import { useQueryClient } from '@tanstack/react-query';
 
 const EventCard = ({ event }: { event: Event; index: number }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -101,6 +102,12 @@ const EventCard = ({ event }: { event: Event; index: number }) => {
       // </div>
     );
   };
+
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ["events-invitaions"] });
+  }, [queryClient]);
+
   return (
     <div className="w-full flex justify-center">
       <div className="max-w-md w-full overflow-hidden">

@@ -8,9 +8,9 @@ const useLogin = () => {
     mutationFn: customerLogin,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["customer-profile", "invoice"],
+        queryKey: ["customer-profile", "invoice","events-invitaions"],
       });
-      queryClient.refetchQueries({ queryKey: ["customer-profile", "invoice"] });
+      queryClient.refetchQueries({ queryKey: ["customer-profile", "invoice","events-invitaions"] });
     },
   });
 
