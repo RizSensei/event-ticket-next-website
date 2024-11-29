@@ -36,9 +36,9 @@ const BookedTickets = () => {
                 return (
                   <div
                     key={invoice?.id}
-                    className="rounded-md overflow-hidden py-3 px-5 bg-paragraph"
+                    className="rounded-md overflow-hidden py-3 px-5 bg-gray-200"
                   >
-                    <div className="flex flex-col divide-y-2 divide-paragraph gap-1">
+                    <div className="flex flex-col divide-y-2 divide-gray-100 gap-1">
                       <div className="flex gap-2 justify-between">
                         <h1 className="w-full font-semibold text-dark-black">
                           {invoice?.event?.name}

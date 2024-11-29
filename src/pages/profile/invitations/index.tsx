@@ -48,7 +48,7 @@ const EventInvitations = () => {
                   <Link
                     href={`/event/${inv?.id}`}
                     key={inv?.id}
-                    className="group rounded-md overflow-hidden py-3 px-5 bg-paragraph"
+                    className="group rounded-md overflow-hidden py-3 px-5 bg-gray-200"
                   >
                     <div className="flex flex-col divide-y-2 divide-paragraph gap-1">
                       <div className="flex flex-col gap-2">
